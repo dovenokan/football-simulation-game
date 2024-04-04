@@ -5,8 +5,6 @@ import matplotlib.pyplot as plt
 import re
 import warnings
 
-
-
 def TPR(df, top_N_players=18):
     '''
     Team Power Rating
