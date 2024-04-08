@@ -1,0 +1,7 @@
+lineup_test_ids = [230621, 235212, 155862, 207865, 252145, 199556, 234153, 230767, 231747, 158023, 190871]
+test_team_df = []
+for player_id in lineup_test_ids:
+    player_df = players_df[players_df['player_id'] == player_id]
+    test_team_df.append(player_df)
+result_df = pd.concat(test_team_df, ignore_index=True)
+result_df

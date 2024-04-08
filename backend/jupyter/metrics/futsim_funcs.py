@@ -176,6 +176,124 @@ def TPSR(df, top_N_players=18):
     # Display the resulting DataFrame
     return merged.sort_values("passing", ascending=False)
 
+def TGKR(df, top_N_players=1):
+    '''
+    Team Goalkeeping Rating
+    '''
+    # Group the DataFrame by club_name
+    club_groups = df.groupby('club_name')
+
+    # Initialize an empty list to store the DataFrames
+    dfs = []
+    tpr_data = TPR(df, top_N_players=18)
+        
+    # Iterate over each club
+    for club_name, club_data in club_groups:
+        # Sort the values by "overall" in descending order and select top N players
+        top_players = club_data.sort_values(by='overall', ascending=False)
+        
+        # Filter top players DataFrame to include only those in 'GK' position
+        gk_players = top_players[top_players['player_positions'].str.contains('GK')].sort_values(by='overall', ascending=False).head(n=1)
+        
+        if not gk_players.empty:
+            # Calculate mean attributes for goalkeepers
+            mean_goalkeeping_diving = gk_players['goalkeeping_diving'].mean()
+            mean_goalkeeping_handling = gk_players['goalkeeping_handling'].mean()
+            mean_goalkeeping_kicking = gk_players['goalkeeping_kicking'].mean()
+            mean_goalkeeping_positioning = gk_players['goalkeeping_positioning'].mean()
+            mean_goalkeeping_reflexes = gk_players['goalkeeping_reflexes'].mean()
+
+            # Calculate the "goalkeeper skill" rating based on attributes
+            gk_skill_rating = (mean_goalkeeping_diving * 0.15 +
+                               mean_goalkeeping_handling * 0.20 +
+                               mean_goalkeeping_kicking * 0.10 +
+                               mean_goalkeeping_positioning * 0.30 +
+                               mean_goalkeeping_reflexes * 0.25)
+
+            # Create a DataFrame with club information and goalkeeper skill rating
+            club_df = pd.DataFrame({
+                "league_id": top_players.iloc[0]['league_id'],
+                "club_team_id": top_players.iloc[0]['club_team_id'],  
+                "league_name": top_players.iloc[0]['league_name'],
+                "club_name": club_name,
+                "power": tpr_data.loc[tpr_data['club_name'] == club_name, 'power'].values[0],
+                "goalkeeping": int(gk_skill_rating)
+            }, index=[0])
+
+            # Append the DataFrame to the list
+            dfs.append(club_df)
+
+    # Concatenate all DataFrames in the list
+    merged = pd.concat(dfs, ignore_index=True)
+
+    # Display the resulting DataFrame
+    return merged.sort_values("goalkeeping", ascending=False)
+
+def TDR(df, top_N_players=18):
+    '''
+    Team Defense Rating
+    '''
+    # Group the DataFrame by club_name
+    club_groups = df.groupby('club_name')
+
+    # Initialize an empty list to store the DataFrames
+    dfs = []
+    tpr_data = TPR(df, top_N_players=18)
+
+    # Iterate over each club
+    for club_name, club_data in club_groups:
+        # Sort the values by "overall" in descending order and select top 18 players
+        top_players = club_data.sort_values(by='overall', ascending=False)
+        
+        # Separate players by positions
+        midfielders = top_players[top_players['player_positions'].str.contains('LM|RM|CM|CDM')].sort_values(by='overall', ascending=False).head(8)
+        defenders = top_players[top_players['player_positions'].str.contains('CB|LB|RB|LWB|RWB')].sort_values(by='overall', ascending=False).head(8)
+        
+        # Calculate mean attributes for each position group
+        mean_defending_stand_tackle_defenders = defenders['defending_standing_tackle'].mean()
+        mean_defending_slide_tackle_defenders = defenders['defending_sliding_tackle'].mean()
+        mean_defending_stand_tackle_midfielders = midfielders['defending_standing_tackle'].mean()
+        mean_defending_slide_tackle_midfielders = midfielders['defending_sliding_tackle'].mean()
+        mean_aggression = midfielders['mentality_aggression'].mean()
+        mean_marking = defenders['defending_marking_awareness'].mean()
+        mean_mentality_positioning = defenders['mentality_positioning'].mean()
+        mean_mentality_interceptions = midfielders['mentality_interceptions'].mean()
+        mean_movement_sprint_speed = defenders['movement_sprint_speed'].mean()
+        mean_defenders = defenders['overall'].mean()
+
+        
+        # Calculate the "defense" rating based on positions
+        defense_rating = (mean_defenders * 0.2 +
+                          mean_defending_stand_tackle_defenders * 0.1 +
+                          mean_defending_slide_tackle_defenders * 0.1 +
+                          mean_defending_stand_tackle_midfielders * 0.05 +
+                          mean_defending_slide_tackle_midfielders * 0.05 +
+                          mean_aggression * 0.05 +
+                          mean_marking * 0.1 +
+                          mean_mentality_positioning * 0.15 +
+                          mean_mentality_interceptions * 0.1 +
+                          mean_movement_sprint_speed * 0.1)
+
+        # Create a DataFrame with club information and defense rating
+        club_df = pd.DataFrame({
+            "league_id": top_players.iloc[0]['league_id'],
+            "club_team_id": top_players.iloc[0]['club_team_id'],  
+            "league_name": top_players.iloc[0]['league_name'],
+            "club_name": club_name,
+            "power": tpr_data.loc[tpr_data['club_name'] == club_name, 'power'].values[0],
+            "defense": int(defense_rating)
+        }, index=[0])
+
+        # Append the DataFrame to the list
+        dfs.append(club_df)
+
+    # Concatenate all DataFrames in the list
+    merged = pd.concat(dfs, ignore_index=True)
+
+    # Display the resulting DataFrame
+    return merged.sort_values("defense", ascending=False)
+
+
 
 
 
