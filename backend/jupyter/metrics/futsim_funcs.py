@@ -69,7 +69,11 @@ def TPR(df, top_N_players=18):
     merged = pd.concat(dfs, ignore_index=True)
 
     # Display the resulting DataFrame
-    return merged.sort_values("power", ascending=False)
+    return {
+        "name": "power",
+        "data": merged.sort_values("power", ascending=False)
+    }
+
 
 def TFR(df, top_N_players=18):
     '''
@@ -122,7 +126,10 @@ def TFR(df, top_N_players=18):
     merged = pd.concat(dfs, ignore_index=True)
 
     # Display the resulting DataFrame
-    return merged.sort_values("finishing", ascending=False)
+    return {
+        "name": "finishing",
+        "data": merged.sort_values("finishing", ascending=False)
+    }
 
 def TPSR(df, top_N_players=18):
     '''
@@ -130,6 +137,7 @@ def TPSR(df, top_N_players=18):
     '''
     # Group the DataFrame by club_name
     club_groups = df.groupby('club_name')
+    tpr_data = TPR(df, top_N_players=18)["data"]
 
     # Initialize an empty list to store the DataFrames
     dfs = []
@@ -148,7 +156,6 @@ def TPSR(df, top_N_players=18):
         mean_curve = outfield_players['skill_curve'].mean()
         mean_ball_control = outfield_players['skill_ball_control'].mean()
         mean_vision = outfield_players['mentality_vision'].mean()
-        mean_power = top_players['overall'].mean()
         
         # Calculate the "passing" rating based on midfielders
         passing_rating = (mean_short_passing * 0.40 +
@@ -163,7 +170,7 @@ def TPSR(df, top_N_players=18):
             "club_team_id": top_players.iloc[0]['club_team_id'],  
             "league_name": top_players.iloc[0]['league_name'],
             "club_name": club_name,
-            "power": int(mean_power),
+            "power":  tpr_data.loc[tpr_data['club_name'] == club_name, 'power'].values[0],
             "passing": int(passing_rating)
         }, index=[0])
 
@@ -185,7 +192,7 @@ def TGKR(df, top_N_players=1):
 
     # Initialize an empty list to store the DataFrames
     dfs = []
-    tpr_data = TPR(df, top_N_players=18)
+    tpr_data = TPR(df, top_N_players=18)["data"]
         
     # Iterate over each club
     for club_name, club_data in club_groups:
@@ -238,7 +245,7 @@ def TDR(df, top_N_players=18):
 
     # Initialize an empty list to store the DataFrames
     dfs = []
-    tpr_data = TPR(df, top_N_players=18)
+    tpr_data = TPR(df, top_N_players=18)["data"]
 
     # Iterate over each club
     for club_name, club_data in club_groups:
