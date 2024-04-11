@@ -19,49 +19,47 @@ def TPR(df, top_N_players=18):
     for club_name, club_data in club_groups:
         # Sort the values by "overall" in descending order and select top 18 players
         top_players = club_data.sort_values(by='overall', ascending=False).head(top_N_players)
-
-        # Separate players by positions
-        goalkeepers = top_players[top_players['player_positions'].str.contains('GK')]
-        outfield_players = top_players[~top_players['player_positions'].str.contains('GK')]
-
-        # Calculate the mean of the attributes for outfield players
-        mean_outfield_attributes = outfield_players.mean(numeric_only=True)
-
+        mean_top_players = top_players.mean(numeric_only=True)
+        
         # Create a DataFrame with club information and mean outfield attributes
         club_df = pd.DataFrame({
-            "league_id": int(top_players.iloc[0]['league_id']),
-            "club_team_id": int(top_players.iloc[0]['club_team_id']),  # Assuming club_team_id is the same for all players in a club
+            "league_id": top_players.iloc[0]['league_id'],
+            "club_team_id": top_players.iloc[0]['club_team_id'],
             "league_name": top_players.iloc[0]['league_name'],
             "club_name": club_name,
-            "power": int(mean_outfield_attributes['overall']),  # Mean overall rating
-        }, index=[0])  # Use index=[0] to ensure it's a DataFrame with a single row
+            "power": int(mean_top_players['overall']),
+        }, index=[0])
+        
+        # Separate players by positions
+        goalkeepers = top_players[top_players['player_positions'].str.contains('GK')].mean(numeric_only=True)
+        defenders = top_players[top_players['player_positions'].str.contains('CB|LB|RB|LWB|RWB')].mean(numeric_only=True)
+        midfielders = top_players[top_players['player_positions'].str.contains('CM|CDM|CAM|LM|RM')].mean(numeric_only=True)
+        attackers = top_players[top_players['player_positions'].str.contains('ST|CF|LW|RW|LF|RF')].mean(numeric_only=True)
 
-        # Calculate the mean of the attributes for goalkeepers
-        if not goalkeepers.empty:
-            mean_goalkeeper_attributes = goalkeepers.mean(numeric_only=True)
-            # Add mean goalkeeper attributes to the club DataFrame
-            club_df["mean_goalkeeping_diving"] = int(mean_goalkeeper_attributes['goalkeeping_diving'])
-            club_df["mean_goalkeeping_handling"] = int(mean_goalkeeper_attributes['goalkeeping_handling'])
-            club_df["mean_goalkeeping_kicking"] = int(mean_goalkeeper_attributes['goalkeeping_kicking'])
-            club_df["mean_goalkeeping_positioning"] = int(mean_goalkeeper_attributes['goalkeeping_positioning'])
-            club_df["mean_goalkeeping_reflexes"] = int(mean_goalkeeper_attributes['goalkeeping_reflexes'])
-
-        # Add mean attributes for outfield players
-        outfield_attributes = [
-            'attacking_crossing', 'attacking_finishing', 'attacking_heading_accuracy',
-            'attacking_short_passing', 'attacking_volleys', 'skill_dribbling',
-            'skill_curve', 'skill_fk_accuracy', 'skill_long_passing',
-            'skill_ball_control', 'movement_acceleration', 'movement_sprint_speed',
-            'movement_agility', 'movement_reactions', 'movement_balance',
-            'power_shot_power', 'power_jumping', 'power_stamina', 'power_strength',
-            'power_long_shots', 'mentality_aggression', 'mentality_interceptions',
-            'mentality_positioning', 'mentality_vision', 'mentality_penalties',
-            'mentality_composure', 'defending_marking_awareness',
-            'defending_standing_tackle', 'defending_sliding_tackle'
+        attributes = [
+            'attacking_crossing','attacking_finishing', 'attacking_heading_accuracy',
+           'attacking_short_passing', 'attacking_volleys', 'skill_dribbling',
+           'skill_curve', 'skill_fk_accuracy', 'skill_long_passing',
+           'skill_ball_control', 'movement_acceleration', 'movement_sprint_speed',
+           'movement_agility', 'movement_reactions', 'movement_balance',
+           'power_shot_power', 'power_jumping', 'power_stamina', 'power_strength',
+           'power_long_shots', 'mentality_aggression', 'mentality_interceptions',
+           'mentality_positioning', 'mentality_vision', 'mentality_penalties',
+           'mentality_composure', 'defending_marking_awareness',
+           'defending_standing_tackle', 'defending_sliding_tackle',
+           'goalkeeping_diving', 'goalkeeping_handling', 'goalkeeping_kicking',
+           'goalkeeping_positioning', 'goalkeeping_reflexes'
         ]
-        for attribute in outfield_attributes:
-            club_df[f"mean_{attribute}"] = int(mean_outfield_attributes[attribute])
 
+        # Add mean attributes for goalkeepers
+        mean_data = {}
+        for position, players in zip(['goalkeepers', 'defenders', 'midfielders', 'attackers'], [goalkeepers, defenders, midfielders, attackers]):
+            for attribute in attributes:
+                mean_data[f"{position}_{attribute}"] = int(players[attribute]) if not pd.isnull(players[attribute]) else 70
+
+        mean_df = pd.DataFrame(mean_data, index=[0]) 
+        club_df = pd.concat([club_df, mean_df], axis=1)
+        
         # Append the DataFrame to the list
         dfs.append(club_df)
 
@@ -298,8 +296,6 @@ def TDR(df, top_N_players=18):
 
     # Display the resulting DataFrame
     return merged.sort_values("defense", ascending=False)
-
-
 
 
 
