@@ -1,0 +1,54 @@
+Index(['Date', 'Time', 'Round', 'Day', 'Venue', 'Result', 'GF', 'GA',
+       'Opponent', 'Total.Cmp', 'Total.Att', 'Total.Cmp%', 'Total.TotDist',
+       'Total.PrgDist', 'Short.Cmp', 'Short.Att', 'Short.Cmp%', 'Medium.Cmp',
+       'Medium.Att', 'Medium.Cmp%', 'Long.Cmp', 'Long.Att', 'Long.Cmp%',
+       'Unnamed: 23_level_0.Ast', 'Unnamed: 24_level_0.xAG',
+       'Unnamed: 25_level_0.xA', 'Unnamed: 26_level_0.KP',
+       'Unnamed: 27_level_0.1/3', 'Unnamed: 28_level_0.PPA',
+       'Unnamed: 29_level_0.CrsPA', 'Unnamed: 30_level_0.PrgP',
+       'Unnamed: 31_level_0.Match Report'],
+      dtype='object') -- convert this to dict properly with terms, terms will be dict keys, assign to "column_dict", lower keys and fill spaces with underscore, and i want proper terms , for example Unnamed: 27_level_0.1/3 will be "final_third_passes"
+
+CHAT GPT EXAMPLE USE WITH ColumnConverter(df, keyword)
+
+
+
+
+------------- EN İYİ FORM key: düzgün, value: original
+column_names = ['Date', 'Time', 'Round', 'Day', 'Venue', 'Result', 'GF', 'GA',
+                'Opponent', 'Standard.Gls', 'Standard.Sh', 'Standard.SoT',
+                'Standard.SoT%', 'Standard.G/Sh', 'Standard.G/SoT', 'Standard.Dist',
+                'Standard.FK', 'Standard.PK', 'Standard.PKatt', 'Expected.xG',
+                'Expected.npxG', 'Expected.npxG/Sh', 'Expected.G-xG',
+                'Expected.np:G-xG', 'Unnamed: 24_level_0.Match Report']
+
+proper_terms = ['Date', 'Time', 'Round', 'Day', 'Venue', 'Result', 'GF', 'GA',
+                'Opponent', 'Goals', 'Shots', 'Shots on Target',
+                'Shots on Target Percentage', 'Goals per Shot', 'Goals per Shot on Target',
+                'Distance Covered', 'Free Kicks', 'Penalties', 'Penalty Attempts',
+                'Expected Goals', 'Non-Penalty Expected Goals', 'Expected Goals per Shot',
+                'Goals minus Expected Goals', 'Non-Penalty Goals minus Expected Goals',
+                'Match Report']
+
+column_dict = dict(zip(proper_terms, column_names))
+
+
+
+
+
+
+
+
+
+
+
+
+
+def expand_dict(index_dict, x, y):
+    keys = index_dict.keys()
+    values = index_dict.values()
+    expanded_dict = {}
+    for key, value in zip(keys, values):
+        print( key, value)
+        expanded_dict["team_"+key.lower()] = x[value]
+    return expanded_dict

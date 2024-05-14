@@ -1,0 +1,31 @@
+lineup_test_ids = [230621, 235212, 155862, 207865, 252145, 199556, 234153, 230767, 231747, 158023, 190871]
+test_team_df = []
+for player_id in lineup_test_ids:
+    player_df = players_df[players_df['player_id'] == player_id]
+    test_team_df.append(player_df)
+result_df = pd.concat(test_team_df, ignore_index=True)
+result_df
+
+
+---------------------------------------------------------------------------------------------------------
+position_order = ['GK', 'RWB', 'RB', 'RCB', 'LCB', 'LB', 'LWB', 'RDM', 'CDM', 'LDM', 
+                  'LCM', 'CM', 'RCM', 'RM', 'RAM', 'CAM', 'LAM', 'LM', 'RW', 'CF', 'ST', 'LW']
+
+def get_position_rank(position):
+    return position_order.index(position) if position in position_order else len(position_order)
+
+df['position_rank'] = df['club_position'].apply(get_position_rank)
+df_sorted = df.sort_values(by='position_rank')
+
+club_name = "Lens"
+result = players_df.query(f"club_name == '{club_name}' and not club_position.str.contains('SUB|RES')", engine='python') \
+[["short_name", "club_position", "overall"]]
+
+df = result
+df.loc[:, 'position_rank'] = df['club_position'].apply(get_position_rank)
+df_sorted = df.sort_values(by='position_rank')
+
+df_sorted
+---------------------------------------------------------------------------------------------------------
+ 
+
