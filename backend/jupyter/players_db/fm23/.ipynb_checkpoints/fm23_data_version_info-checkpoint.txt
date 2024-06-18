@@ -1,2 +1,0 @@
-raw: raw
-processed: dob, height, abbreviations of ratings renamed, team ratings functions added
