@@ -1,154 +1,154 @@
 Club,Club_id,League_id,Division,Based,tpr,gk,def,pas,dri,fin,sta,str,hed,men,iq,fbref_name
-Manchester City,6827,354,English Premier Division,England (Premier Division),93,88,89,98,94,92,101,95,86,94,92,Manchester City
-Paris Saint-Germain,7994,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),93,81,86,100,97,90,93,91,88,90,91,Paris S-G
-Liverpool,6518,354,English Premier Division,England (Premier Division),92,90,89,95,94,87,101,94,94,92,90,Liverpool
-FC Barcelona,1435,1215,Spanish First Division,Spain (First Division),91,91,87,92,93,91,98,94,93,94,92,Barcelona
-Internazionale,5215,710,Italian Serie A,Italy (Serie A),91,82,90,91,87,91,98,102,100,86,85,Inter
-FC Bayern,3704,185,Bundesliga,Germany (Bundesliga),90,89,86,91,95,83,103,96,86,91,89,Bayern Munich
-Real Madrid,8716,1215,Spanish First Division,Spain (First Division),90,84,88,101,92,94,97,95,89,90,92,Real Madrid
-Tottenham Hotspur,11015,354,English Premier Division,England (Premier Division),89,75,86,89,87,93,101,96,92,86,82,Tottenham
-Manchester United,6828,354,English Premier Division,England (Premier Division),89,80,87,94,92,92,105,94,95,86,84,Manchester Utd
-Juventus,5523,710,Italian Serie A,Italy (Serie A),88,81,85,94,89,89,97,100,88,84,87,Juventus
-Chelsea,2432,354,English Premier Division,England (Premier Division),88,82,88,90,90,86,107,99,91,93,89,Chelsea
-Napoli,8135,710,Italian Serie A,Italy (Serie A),87,75,86,89,89,88,95,97,92,85,80,Napoli
-AC Milan,7093,710,Italian Serie A,Italy (Serie A),87,80,85,88,91,90,91,99,93,90,83,Milan
-West Ham United,11994,354,English Premier Division,England (Premier Division),87,76,88,85,86,85,98,97,100,88,80,West Ham
-Real Betis,8995,1215,Spanish First Division,Spain (First Division),86,80,84,90,86,86,91,97,91,85,84,Betis
-Atlético Madrid,66,1215,Spanish First Division,Spain (First Division),86,87,85,92,90,84,91,91,90,91,84,Atlético Madrid
-Villarreal,11788,1215,Spanish First Division,Spain (First Division),86,85,85,89,89,86,94,89,88,86,82,Villarreal
-Arsenal,974,354,English Premier Division,England (Premier Division),86,83,83,91,90,80,93,91,89,83,85,Arsenal
-AS Roma,2229,710,Italian Serie A,Italy (Serie A),86,73,87,88,89,85,95,96,96,87,80,Roma
-Lazio,6346,710,Italian Serie A,Italy (Serie A),86,79,83,88,88,90,96,92,93,82,86,Lazio
-Atalanta,1071,710,Italian Serie A,Italy (Serie A),86,75,87,83,89,92,95,99,87,82,78,Atalanta
-Leicester City,6379,354,English Premier Division,England (Premier Division),85,73,83,87,84,90,98,94,87,85,83,Leicester City
-OGC Nice,7706,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),85,84,82,84,86,81,89,94,89,82,83,Nice
-Borussia Dortmund,1779,185,Bundesliga,Germany (Bundesliga),85,81,83,90,89,88,94,98,91,86,84,Dortmund
-Real Sociedad,9017,1215,Spanish First Division,Spain (First Division),85,82,82,90,84,87,92,92,87,87,84,Real Sociedad
-Sporting CP,10362,1017,Portuguese Premier League,Portugal (Premier League),85,74,82,88,89,82,90,88,82,88,82,nan
-Aston Villa,1045,354,English Premier Division,England (Premier Division),85,79,85,86,86,85,97,90,89,83,80,Aston Villa
-Sevilla,9985,1215,Spanish First Division,Spain (First Division),84,75,83,95,89,83,92,87,90,89,86,Sevilla
-Valencia,11572,1215,Spanish First Division,Spain (First Division),84,76,82,82,87,83,89,91,90,82,81,Valencia
-RB Leipzig,8733,185,Bundesliga,Germany (Bundesliga),84,74,83,85,85,83,97,92,85,85,82,RB Leipzig
-Fulham,4263,354,English Premier Division,England (Premier Division),84,80,85,84,86,85,93,97,89,82,78,Fulham
-Newcastle United,7523,354,English Premier Division,England (Premier Division),84,82,83,84,89,83,93,93,89,83,82,Newcastle Utd
-Southampton,10257,354,English Premier Division,England (Premier Division),84,80,80,83,85,80,99,91,88,77,79,Southampton
-Ajax,435,363,Eredivisie,Holland (Eredivisie),83,78,80,86,86,82,96,92,83,86,83,nan
-Fiorentina,4117,710,Italian Serie A,Italy (Serie A),83,81,82,83,88,84,90,91,88,81,79,Fiorentina
-Benfica,1562,1017,Portuguese Premier League,Portugal (Premier League),83,71,84,88,89,81,95,89,86,86,82,nan
-Galatasaray,4334,1331,Turkish Super League,Turkey (Super League),83,73,76,86,84,89,91,86,79,86,80,nan
-AS Monaco,193,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),83,78,81,83,86,76,95,94,84,79,78,Monaco
-FC Porto,3878,1017,Portuguese Premier League,Portugal (Premier League),83,78,82,85,89,85,94,90,89,88,81,nan
-Trabzonspor,11022,1331,Turkish Super League,Turkey (Super League),82,75,80,86,82,83,87,89,88,85,77,nan
-Nottingham Forest,7624,354,English Premier Division,England (Premier Division),82,78,82,82,87,82,95,94,89,78,77,Nott'ham Forest
-Rayo Vallecano,11581,1215,Spanish First Division,Spain (First Division),82,76,81,83,84,87,89,89,89,84,80,Rayo Vallecano
-Getafe,4403,1215,Spanish First Division,Spain (First Division),82,77,82,85,79,85,92,89,85,83,81,Getafe
-Girona,4434,1215,Spanish First Division,Spain (First Division),82,79,81,83,83,80,92,88,86,83,80,Girona
-Leeds United,6363,354,English Premier Division,England (Premier Division),82,78,81,81,88,82,105,84,86,81,78,Leeds United
-Wolverhampton,12084,354,English Premier Division,England (Premier Division),82,77,79,87,93,81,89,89,91,86,83,Wolves
-Everton,3647,354,English Premier Division,England (Premier Division),82,83,83,80,83,80,97,95,94,84,76,Everton
-Bayer Leverkusen,1487,185,Bundesliga,Germany (Bundesliga),82,79,80,86,89,83,92,88,79,83,78,Leverkusen
-Besiktas,1614,1331,Turkish Super League,Turkey (Super League),82,71,81,83,84,85,96,89,88,85,79,nan
-Bologna,1737,710,Italian Serie A,Italy (Serie A),82,66,80,83,83,81,90,93,88,79,77,Bologna
-Udinese,11321,710,Italian Serie A,Italy (Serie A),82,71,82,83,85,82,91,93,90,84,76,Udinese
-Strasbourg,10546,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),82,74,82,79,81,77,90,97,91,81,73,Strasbourg
-Brighton & Hove Albion,1865,354,English Premier Division,England (Premier Division),82,80,80,87,87,85,94,83,83,84,82,Brighton
-Celta de Vigo,11729,1215,Spanish First Division,Spain (First Division),81,75,80,84,85,83,90,90,82,83,82,Celta Vigo
-Rennes,9065,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),81,76,77,84,84,82,93,85,81,78,80,Rennes
-Athletic Bilbao,59,1215,Spanish First Division,Spain (First Division),81,82,81,83,83,81,88,87,88,83,80,Athletic Club
-Lille,6210,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),81,68,80,84,88,81,84,87,86,79,76,Lille
-Gladbach,1781,185,Bundesliga,Germany (Bundesliga),81,81,80,84,83,76,96,88,85,86,81,Gladbach
-Lyon,7710,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),81,76,78,82,83,81,93,87,87,80,80,Lyon
-Braga,1301,1017,Portuguese Premier League,Portugal (Premier League),81,80,79,84,85,83,89,87,85,81,78,nan
-Brentford,1854,354,English Premier Division,England (Premier Division),81,80,82,82,83,80,89,87,88,82,80,Brentford
-Salernitana,9666,710,Italian Serie A,Italy (Serie A),81,70,81,85,83,83,91,90,89,80,80,Salernitana
-Marseille,7711,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),81,74,82,89,88,79,90,89,83,77,81,Marseille
-Fenerbahçe,4064,1331,Turkish Super League,Turkey (Super League),81,75,81,88,89,81,95,93,91,83,76,nan
-Sassuolo,9870,710,Italian Serie A,Italy (Serie A),81,78,79,83,85,83,88,85,85,81,80,Sassuolo
-Crystal Palace,2776,354,English Premier Division,England (Premier Division),81,78,81,81,87,81,90,87,86,81,78,Crystal Palace
-Osasuna,1175,1215,Spanish First Division,Spain (First Division),81,75,81,85,80,79,87,91,91,81,78,Osasuna
-Elche CF,3469,1215,Spanish First Division,Spain (First Division),81,81,82,87,84,86,92,92,88,79,79,Elche
-Monza,1859,710,Italian Serie A,Italy (Serie A),80,74,81,83,80,82,86,91,93,79,77,Monza
-TSG Hoffenheim,4935,185,Bundesliga,Germany (Bundesliga),80,76,82,83,81,74,97,92,86,82,79,Hoffenheim
-Sampdoria,9696,710,Italian Serie A,Italy (Serie A),80,71,79,83,80,87,91,91,85,80,79,Sampdoria
-Torino,10974,710,Italian Serie A,Italy (Serie A),80,76,79,82,87,78,86,84,88,79,77,Torino
-Union Berlin,11360,185,Bundesliga,Germany (Bundesliga),80,78,84,78,83,77,99,93,86,86,76,Union Berlin
-PSV,8007,363,Eredivisie,Holland (Eredivisie),80,75,78,82,84,78,91,88,85,80,78,nan
-SC Freiburg,9350,185,Bundesliga,Germany (Bundesliga),80,79,79,81,82,85,94,83,88,85,76,Freiburg
-VfL Wolfsburg,11700,185,Bundesliga,Germany (Bundesliga),80,76,80,83,86,81,92,90,83,79,76,Wolfsburg
-Hertha BSC,4898,185,Bundesliga,Germany (Bundesliga),80,77,80,83,87,80,99,92,85,81,77,Hertha BSC
-Hellas Verona,11677,710,Italian Serie A,Italy (Serie A),80,76,81,81,83,79,91,100,94,80,76,Hellas Verona
-Eintracht Frankfurt,3441,185,Bundesliga,Germany (Bundesliga),80,75,80,82,83,78,93,91,80,84,76,Eint Frankfurt
-FC Köln,6,185,Bundesliga,Germany (Bundesliga),80,73,79,77,80,77,98,92,87,77,74,Köln
-Cádiz,2811,1215,Spanish First Division,Spain (First Division),79,76,78,82,82,77,93,91,85,81,80,Cádiz
-Brest,1856,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),79,77,78,79,78,79,89,87,88,78,74,Brest
-Montpellier,7225,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),79,75,77,82,82,76,86,88,81,78,77,Montpellier
-FC Utrecht,3938,363,Eredivisie,Holland (Eredivisie),79,71,78,79,82,74,87,87,85,80,75,nan
-FC Nantes,3853,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),79,78,79,80,81,74,91,89,87,79,76,Nantes
-Bournemouth,1805,354,English Premier Division,England (Premier Division),79,76,79,80,86,79,94,87,83,79,79,Bournemouth
-Mallorca,6816,1215,Spanish First Division,Spain (First Division),79,76,79,80,80,79,90,91,86,80,76,Mallorca
-VfB Stuttgart,11695,185,Bundesliga,Germany (Bundesliga),79,76,79,79,82,77,85,90,82,79,76,Stuttgart
-FSV Mainz,6784,185,Bundesliga,Germany (Bundesliga),79,72,82,81,82,76,90,88,82,79,76,Mainz 05
-Espanyol,3572,1215,Spanish First Division,Spain (First Division),79,76,77,80,81,79,84,85,78,80,77,Espanyol
-Empoli,3502,710,Italian Serie A,Italy (Serie A),79,71,79,79,82,78,90,86,86,78,77,Empoli
-Adana D.S.,336,1331,Turkish Super League,Turkey (Super League),79,75,77,82,84,77,90,88,81,80,77,nan
-Schalke 04,9887,185,Bundesliga,Germany (Bundesliga),79,74,77,79,78,79,90,89,86,77,76,Schalke 04
-Spezia,10337,710,Italian Serie A,Italy (Serie A),78,74,79,80,82,76,87,85,83,82,74,Spezia
-Cremonese,2744,710,Italian Serie A,Italy (Serie A),78,76,79,78,79,80,89,89,85,83,76,Cremonese
-FC Augsburg,3692,185,Bundesliga,Germany (Bundesliga),78,72,79,80,81,76,94,87,78,84,75,Augsburg
-Istanbul Basaksehir,1499,1331,Turkish Super League,Turkey (Super League),78,70,76,87,81,78,86,86,82,83,80,nan
-RC Lens,8745,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),78,70,78,78,81,78,87,89,83,78,73,Lens
-Real Valladolid,11579,1215,Spanish First Division,Spain (First Division),78,76,78,80,81,87,87,83,85,81,79,Valladolid
-Troyes,11083,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),78,72,78,78,80,72,90,88,82,78,76,Troyes
-Almería,685,1215,Spanish First Division,Spain (First Division),78,83,77,83,81,78,87,84,84,82,81,Almería
-Kasimpasa,5865,1331,Turkish Super League,Turkey (Super League),78,70,77,82,78,76,84,91,84,75,78,nan
-AZ,274,363,Eredivisie,Holland (Eredivisie),78,74,76,80,81,75,88,87,81,82,77,nan
-Lecce,9665,710,Italian Serie A,Italy (Serie A),78,69,80,78,81,79,87,88,87,80,74,Lecce
-VfL Bochum,11697,185,Bundesliga,Germany (Bundesliga),78,76,80,76,81,74,92,92,86,80,72,Bochum
-Antalyaspor,832,1331,Turkish Super League,Turkey (Super League),78,82,75,81,81,75,80,88,81,75,76,nan
-Feyenoord,4102,363,Eredivisie,Holland (Eredivisie),78,78,74,79,84,82,89,83,82,78,75,nan
-Gaziantep,4363,1331,Turkish Super League,Turkey (Super League),77,74,76,78,79,75,83,85,83,76,72,nan
-Lorient,3825,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),77,76,75,78,82,71,88,89,78,76,74,Lorient
-Ankaragücü,819,1331,Turkish Super League,Turkey (Super League),77,77,76,80,80,75,86,90,87,78,74,nan
-Ajaccio,88,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),77,66,77,78,80,69,86,90,81,75,71,Ajaccio
-Sivasspor,10089,1331,Turkish Super League,Turkey (Super League),77,70,77,75,80,77,90,83,82,79,73,nan
-Boavista,1318,1017,Portuguese Premier League,Portugal (Premier League),77,77,77,77,82,77,89,92,81,77,73,nan
-Reims,9054,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),77,70,76,77,83,71,86,90,80,77,70,Reims
-Werder Bremen,9601,185,Bundesliga,Germany (Bundesliga),77,73,78,76,80,73,89,87,83,80,71,Werder Bremen
-Angers,809,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),77,70,79,78,82,77,87,89,88,75,75,Angers
-Alanyaspor,596,1331,Turkish Super League,Turkey (Super League),76,68,74,78,78,78,86,85,86,77,71,nan
-Chaves,2428,1017,Portuguese Premier League,Portugal (Premier League),76,68,76,76,80,74,86,93,85,73,71,nan
-Vizela,11525,1017,Portuguese Premier League,Portugal (Premier League),76,65,75,82,80,80,81,89,78,76,76,nan
-Toulouse,11016,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),76,69,75,78,80,79,83,82,81,77,76,Toulouse
-Casa Pia,2273,1017,Portuguese Premier League,Portugal (Premier League),76,72,77,78,80,77,83,89,77,77,73,nan
-AJ Auxerre,145,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),76,74,77,78,79,73,86,86,82,76,72,Auxerre
-Fatih Karagümrük,4047,1331,Turkish Super League,Turkey (Super League),76,74,76,80,81,74,82,90,80,77,74,nan
-Estoril Praia,3593,1017,Portuguese Premier League,Portugal (Premier League),76,70,77,80,81,77,86,87,83,77,75,nan
-Konyaspor,6048,1331,Turkish Super League,Turkey (Super League),76,73,75,80,80,76,86,84,83,75,75,nan
-Gil Vicente,4416,1017,Portuguese Premier League,Portugal (Premier League),76,70,75,80,81,78,82,80,82,78,74,nan
-Hatayspor,4829,1331,Turkish Super League,Turkey (Super League),76,70,77,79,82,77,83,89,87,76,74,nan
-Portimonense,8010,1017,Portuguese Premier League,Portugal (Premier League),76,74,77,79,82,76,86,83,86,78,73,nan
-Vitesse,11833,363,Eredivisie,Holland (Eredivisie),75,69,74,77,77,74,87,87,80,74,70,nan
-Clermont,2569,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),75,73,76,77,78,72,84,87,82,74,74,Clermont Foot
-Famalicão,4027,1017,Portuguese Premier League,Portugal (Premier League),75,71,75,81,80,79,81,88,84,77,75,nan
-Arouca,969,1017,Portuguese Premier League,Portugal (Premier League),75,68,75,82,80,76,86,82,77,78,76,nan
-Vitória Guimarães,11542,1017,Portuguese Premier League,Portugal (Premier League),75,74,76,81,81,77,82,85,80,80,75,nan
-Fortuna Sittard,4209,363,Eredivisie,Holland (Eredivisie),75,71,72,77,79,74,81,79,81,74,72,nan
-Rio Ave,9116,1017,Portuguese Premier League,Portugal (Premier League),75,67,75,79,81,81,79,82,78,75,73,nan
-Giresunspor,4433,1331,Turkish Super League,Turkey (Super League),74,70,75,76,77,71,82,85,78,72,73,nan
-Heerenveen,12267,363,Eredivisie,Holland (Eredivisie),74,68,72,78,78,75,82,83,83,76,72,nan
-Kayserispor,5878,1331,Turkish Super League,Turkey (Super League),74,69,74,77,80,76,86,78,81,77,74,nan
-Santa Clara,9816,1017,Portuguese Premier League,Portugal (Premier League),74,72,75,80,81,71,82,83,76,76,73,nan
-NEC,7354,363,Eredivisie,Holland (Eredivisie),74,75,72,79,77,75,81,83,83,76,73,nan
-Marítimo,6722,1017,Portuguese Premier League,Portugal (Premier League),74,66,76,78,79,78,81,84,86,78,71,nan
-Paços de Ferreira,7942,1017,Portuguese Premier League,Portugal (Premier League),74,72,73,81,79,72,82,82,77,80,74,nan
-FC Twente,3930,363,Eredivisie,Holland (Eredivisie),73,69,71,76,79,72,85,82,77,79,73,nan
-FC Emmen,3756,363,Eredivisie,Holland (Eredivisie),73,71,72,77,77,69,81,82,82,74,72,nan
-Ümraniyespor,12340,1331,Turkish Super League,Turkey (Super League),73,68,74,73,76,67,81,81,77,74,71,nan
-Go Ahead,4469,363,Eredivisie,Holland (Eredivisie),72,72,71,74,78,68,81,81,74,73,70,nan
-Groningen,3775,363,Eredivisie,Holland (Eredivisie),72,73,71,75,78,70,81,75,83,72,68,nan
-Sparta,10312,363,Eredivisie,Holland (Eredivisie),72,65,71,76,77,68,82,78,77,75,72,nan
-FC Volendam,3948,363,Eredivisie,Holland (Eredivisie),70,67,70,75,75,67,74,75,80,72,70,nan
-Cambuur,9344,363,Eredivisie,Holland (Eredivisie),70,67,70,71,77,68,81,78,79,75,68,nan
-RKC,8812,363,Eredivisie,Holland (Eredivisie),70,64,68,73,76,66,77,80,73,74,67,nan
-Excelsior,3655,363,Eredivisie,Holland (Eredivisie),70,62,69,74,77,61,76,74,79,71,70,nan
-İstanbulspor,12361,1331,Turkish Super League,Turkey (Super League),69,68,72,75,78,76,77,80,75,74,68,nan
+Manchester City,6827,354,English Premier Division,England (Premier Division),88,73,74,80,77,76,83,78,71,77,77,Manchester City
+Paris Saint-Germain,7994,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),88,67,71,82,80,74,76,75,73,74,80,Paris S-G
+Internazionale,5215,710,Italian Serie A,Italy (Serie A),86,67,74,75,72,75,81,84,82,71,72,Inter
+Liverpool,6518,354,English Premier Division,England (Premier Division),86,74,73,78,77,72,83,77,77,75,75,Liverpool
+FC Barcelona,1435,1215,Spanish First Division,Spain (First Division),86,75,72,76,76,75,81,77,77,77,78,Barcelona
+Manchester United,6828,354,English Premier Division,England (Premier Division),85,66,71,77,76,76,87,77,78,71,72,Manchester Utd
+FC Bayern,3704,185,Bundesliga,Germany (Bundesliga),85,73,71,75,78,68,85,79,71,75,75,Bayern Munich
+Real Madrid,8716,1215,Spanish First Division,Spain (First Division),85,69,73,83,76,77,79,78,73,74,77,Real Madrid
+Juventus,5523,710,Italian Serie A,Italy (Serie A),84,67,70,78,73,73,80,82,72,69,73,Juventus
+Chelsea,2432,354,English Premier Division,England (Premier Division),84,68,72,74,74,71,88,82,75,76,75,Chelsea
+Tottenham Hotspur,11015,354,English Premier Division,England (Premier Division),84,62,71,73,72,76,83,79,76,71,70,Tottenham
+Atlético Madrid,66,1215,Spanish First Division,Spain (First Division),83,72,70,75,74,69,75,75,74,75,73,Atlético Madrid
+Lazio,6346,710,Italian Serie A,Italy (Serie A),83,65,68,72,72,74,79,75,77,68,74,Lazio
+Napoli,8135,710,Italian Serie A,Italy (Serie A),83,62,71,73,73,72,78,80,76,70,69,Napoli
+AC Milan,7093,710,Italian Serie A,Italy (Serie A),83,66,70,73,75,74,75,81,76,74,72,Milan
+AS Roma,2229,710,Italian Serie A,Italy (Serie A),83,60,71,72,73,70,78,79,79,72,70,Roma
+Arsenal,974,354,English Premier Division,England (Premier Division),83,68,69,75,74,66,76,75,73,69,74,Arsenal
+West Ham United,11994,354,English Premier Division,England (Premier Division),83,62,73,70,71,70,80,80,82,73,68,West Ham
+Aston Villa,1045,354,English Premier Division,England (Premier Division),82,65,70,71,71,70,80,74,73,68,69,Aston Villa
+Sevilla,9985,1215,Spanish First Division,Spain (First Division),82,62,68,78,74,68,75,71,74,73,74,Sevilla
+Atalanta,1071,710,Italian Serie A,Italy (Serie A),82,62,72,68,73,76,78,82,71,67,68,Atalanta
+Real Betis,8995,1215,Spanish First Division,Spain (First Division),82,66,69,74,71,70,75,80,75,70,71,Betis
+RB Leipzig,8733,185,Bundesliga,Germany (Bundesliga),82,61,68,70,70,68,80,76,70,70,71,RB Leipzig
+OGC Nice,7706,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),82,69,67,69,71,66,73,77,73,68,69,Nice
+Borussia Dortmund,1779,185,Bundesliga,Germany (Bundesliga),82,67,68,74,73,73,78,81,74,71,71,Dortmund
+Villarreal,11788,1215,Spanish First Division,Spain (First Division),82,70,70,73,73,71,77,73,72,70,70,Villarreal
+Leicester City,6379,354,English Premier Division,England (Premier Division),82,60,69,72,69,74,81,77,72,70,71,Leicester City
+Real Sociedad,9017,1215,Spanish First Division,Spain (First Division),82,68,68,74,69,71,76,76,71,71,72,Real Sociedad
+Fiorentina,4117,710,Italian Serie A,Italy (Serie A),81,67,67,68,72,69,74,75,72,67,67,Fiorentina
+Ajax,435,363,Eredivisie,Holland (Eredivisie),81,64,66,71,71,67,79,76,68,71,71,nan
+Newcastle United,7523,354,English Premier Division,England (Premier Division),81,67,68,69,73,68,76,77,73,69,70,Newcastle Utd
+Fulham,4263,354,English Premier Division,England (Premier Division),81,66,70,69,71,70,77,80,73,68,66,Fulham
+FC Porto,3878,1017,Portuguese Premier League,Portugal (Premier League),81,64,67,70,73,70,78,74,73,72,70,nan
+Galatasaray,4334,1331,Turkish Super League,Turkey (Super League),81,60,62,71,69,73,74,71,65,71,69,nan
+Valencia,11572,1215,Spanish First Division,Spain (First Division),81,63,67,67,71,68,73,75,74,68,67,Valencia
+Southampton,10257,354,English Premier Division,England (Premier Division),81,66,66,68,70,65,82,75,72,64,66,Southampton
+Sporting CP,10362,1017,Portuguese Premier League,Portugal (Premier League),81,61,68,73,73,67,74,72,67,72,70,nan
+Udinese,11321,710,Italian Serie A,Italy (Serie A),80,58,68,69,69,67,75,77,74,69,65,Udinese
+Strasbourg,10546,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),80,61,67,65,67,63,74,80,75,67,62,Strasbourg
+AS Monaco,193,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),80,64,67,68,71,62,78,77,69,65,67,Monaco
+Bayer Leverkusen,1487,185,Bundesliga,Germany (Bundesliga),80,65,65,71,73,68,76,73,64,68,67,Leverkusen
+Wolverhampton,12084,354,English Premier Division,England (Premier Division),80,63,65,72,76,67,73,73,75,70,70,Wolves
+Benfica,1562,1017,Portuguese Premier League,Portugal (Premier League),80,58,69,72,73,66,78,73,70,71,70,nan
+Gladbach,1781,185,Bundesliga,Germany (Bundesliga),80,67,66,69,68,62,79,72,70,71,68,Gladbach
+Girona,4434,1215,Spanish First Division,Spain (First Division),80,65,67,69,68,65,76,72,71,68,69,Girona
+Besiktas,1614,1331,Turkish Super League,Turkey (Super League),80,58,67,68,69,69,79,73,72,70,68,nan
+Getafe,4403,1215,Spanish First Division,Spain (First Division),80,63,67,70,66,70,75,73,70,68,69,Getafe
+Trabzonspor,11022,1331,Turkish Super League,Turkey (Super League),80,62,66,71,68,68,71,73,72,70,67,nan
+Bologna,1737,710,Italian Serie A,Italy (Serie A),80,54,66,68,68,66,74,77,72,65,66,Bologna
+Brighton & Hove Albion,1865,354,English Premier Division,England (Premier Division),80,66,66,71,71,70,77,68,68,69,68,Brighton
+Nottingham Forest,7624,354,English Premier Division,England (Premier Division),80,64,68,67,72,67,78,77,73,64,64,Nott'ham Forest
+Rayo Vallecano,11581,1215,Spanish First Division,Spain (First Division),80,63,67,68,68,72,73,73,73,69,69,Rayo Vallecano
+Everton,3647,354,English Premier Division,England (Premier Division),80,68,68,66,69,66,80,78,78,69,63,Everton
+Crystal Palace,2776,354,English Premier Division,England (Premier Division),80,64,66,66,72,66,74,71,71,67,66,Crystal Palace
+Celta de Vigo,11729,1215,Spanish First Division,Spain (First Division),80,62,66,69,70,68,74,74,68,68,71,Celta Vigo
+Athletic Bilbao,59,1215,Spanish First Division,Spain (First Division),79,67,67,68,69,66,72,71,72,69,66,Athletic Club
+Leeds United,6363,354,English Premier Division,England (Premier Division),79,64,66,66,72,67,86,69,70,66,65,Leeds United
+Sampdoria,9696,710,Italian Serie A,Italy (Serie A),79,58,65,68,66,72,75,74,70,66,70,Sampdoria
+Lille,6210,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),79,56,66,69,72,67,69,71,71,65,66,Lille
+Eintracht Frankfurt,3441,185,Bundesliga,Germany (Bundesliga),79,62,66,68,69,64,76,74,66,69,66,Eint Frankfurt
+Lyon,7710,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),79,63,64,68,68,66,76,71,71,66,66,Lyon
+Salernitana,9666,710,Italian Serie A,Italy (Serie A),79,58,67,70,69,68,75,74,73,66,68,Salernitana
+SC Freiburg,9350,185,Bundesliga,Germany (Bundesliga),79,65,65,67,67,70,77,68,72,70,65,Freiburg
+Rennes,9065,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),79,63,63,69,69,67,76,70,66,64,67,Rennes
+Marseille,7711,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),79,61,68,73,72,65,74,73,68,64,70,Marseille
+Elche CF,3469,1215,Spanish First Division,Spain (First Division),79,67,67,71,69,70,76,76,72,65,67,Elche
+Union Berlin,11360,185,Bundesliga,Germany (Bundesliga),79,64,69,64,68,63,81,76,71,71,63,Union Berlin
+Monza,1859,710,Italian Serie A,Italy (Serie A),79,61,66,68,66,67,70,75,77,65,66,Monza
+Torino,10974,710,Italian Serie A,Italy (Serie A),79,63,65,68,72,64,70,69,72,64,67,Torino
+Braga,1301,1017,Portuguese Premier League,Portugal (Premier League),79,66,65,69,70,68,73,71,70,67,66,nan
+Fenerbahçe,4064,1331,Turkish Super League,Turkey (Super League),79,62,66,73,73,67,78,77,74,68,66,nan
+Brentford,1854,354,English Premier Division,England (Premier Division),79,66,68,67,68,65,73,71,72,67,67,Brentford
+Sassuolo,9870,710,Italian Serie A,Italy (Serie A),79,64,65,69,70,68,72,70,70,66,68,Sassuolo
+TSG Hoffenheim,4935,185,Bundesliga,Germany (Bundesliga),79,63,67,69,67,61,80,75,71,67,68,Hoffenheim
+Osasuna,1175,1215,Spanish First Division,Spain (First Division),79,62,67,70,66,65,71,75,75,66,67,Osasuna
+PSV,8007,363,Eredivisie,Holland (Eredivisie),79,62,64,68,69,64,75,72,70,65,67,nan
+VfL Wolfsburg,11700,185,Bundesliga,Germany (Bundesliga),79,63,66,68,71,66,75,74,68,65,67,Wolfsburg
+VfB Stuttgart,11695,185,Bundesliga,Germany (Bundesliga),78,63,65,65,68,63,70,74,67,64,64,Stuttgart
+Kasimpasa,5865,1331,Turkish Super League,Turkey (Super League),78,58,63,68,64,62,69,75,69,61,66,nan
+Montpellier,7225,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),78,62,63,67,68,62,70,72,66,64,64,Montpellier
+Hertha BSC,4898,185,Bundesliga,Germany (Bundesliga),78,63,66,68,71,66,81,76,70,67,65,Hertha BSC
+FC Nantes,3853,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),78,64,65,66,67,61,74,73,71,65,63,Nantes
+Bournemouth,1805,354,English Premier Division,England (Premier Division),78,63,65,66,71,65,77,71,68,65,67,Bournemouth
+FSV Mainz,6784,185,Bundesliga,Germany (Bundesliga),78,59,67,66,67,62,74,72,67,65,64,Mainz 05
+FC Utrecht,3938,363,Eredivisie,Holland (Eredivisie),78,58,64,65,68,61,72,71,69,66,65,nan
+Empoli,3502,710,Italian Serie A,Italy (Serie A),78,58,65,65,68,64,74,71,71,64,65,Empoli
+Espanyol,3572,1215,Spanish First Division,Spain (First Division),78,63,64,66,67,65,69,70,64,66,64,Espanyol
+Brest,1856,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),78,63,64,65,64,64,73,71,73,64,62,Brest
+Adana D.S.,336,1331,Turkish Super League,Turkey (Super League),78,62,63,67,69,63,74,72,67,66,65,nan
+FC Köln,6,185,Bundesliga,Germany (Bundesliga),78,60,65,63,66,63,81,76,72,63,63,Köln
+Hellas Verona,11677,710,Italian Serie A,Italy (Serie A),78,63,67,66,68,65,75,82,77,66,64,Hellas Verona
+Istanbul Basaksehir,1499,1331,Turkish Super League,Turkey (Super League),78,58,62,72,67,64,71,70,68,68,70,nan
+Cádiz,2811,1215,Spanish First Division,Spain (First Division),78,63,64,68,68,63,76,75,70,67,67,Cádiz
+Cremonese,2744,710,Italian Serie A,Italy (Serie A),77,63,65,65,65,66,73,73,70,68,63,Cremonese
+Almería,685,1215,Spanish First Division,Spain (First Division),77,68,63,68,67,64,71,69,69,68,68,Almería
+RC Lens,8745,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),77,58,64,64,67,64,72,73,68,64,61,Lens
+VfL Bochum,11697,185,Bundesliga,Germany (Bundesliga),77,63,66,62,67,60,75,75,71,65,59,Bochum
+Angers,809,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),77,58,65,64,68,63,71,73,72,61,62,Angers
+FC Augsburg,3692,185,Bundesliga,Germany (Bundesliga),77,59,65,66,67,62,78,72,64,69,63,Augsburg
+Ajaccio,88,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),77,54,63,64,66,56,70,74,66,61,61,Ajaccio
+Schalke 04,9887,185,Bundesliga,Germany (Bundesliga),77,61,63,65,65,65,74,73,70,64,63,Schalke 04
+Feyenoord,4102,363,Eredivisie,Holland (Eredivisie),77,64,61,65,69,67,73,68,67,64,64,nan
+Real Valladolid,11579,1215,Spanish First Division,Spain (First Division),77,63,64,66,67,71,72,68,70,67,66,Valladolid
+Sivasspor,10089,1331,Turkish Super League,Turkey (Super League),77,58,63,62,66,63,74,68,67,65,62,nan
+Antalyaspor,832,1331,Turkish Super League,Turkey (Super League),77,67,62,67,67,62,66,72,66,61,64,nan
+Spezia,10337,710,Italian Serie A,Italy (Serie A),77,61,65,66,68,62,71,70,68,67,62,Spezia
+Troyes,11083,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),77,59,64,64,66,59,74,72,67,64,63,Troyes
+Werder Bremen,9601,185,Bundesliga,Germany (Bundesliga),77,60,64,62,66,60,73,72,68,66,60,Werder Bremen
+Mallorca,6816,1215,Spanish First Division,Spain (First Division),77,63,65,66,67,64,74,74,70,66,65,Mallorca
+AZ,274,363,Eredivisie,Holland (Eredivisie),77,61,62,66,67,62,72,72,67,68,65,nan
+Lecce,9665,710,Italian Serie A,Italy (Serie A),77,57,65,64,67,65,71,73,71,65,60,Lecce
+Reims,9054,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),77,58,63,63,68,58,71,74,66,64,60,Reims
+Casa Pia,2273,1017,Portuguese Premier League,Portugal (Premier League),76,59,63,64,66,63,68,73,63,64,63,nan
+Konyaspor,6048,1331,Turkish Super League,Turkey (Super League),76,60,61,66,66,62,71,69,68,62,64,nan
+Boavista,1318,1017,Portuguese Premier League,Portugal (Premier League),76,63,63,64,67,63,73,76,66,63,61,nan
+Estoril Praia,3593,1017,Portuguese Premier League,Portugal (Premier League),76,58,63,66,67,63,71,72,68,63,64,nan
+Ankaragücü,819,1331,Turkish Super League,Turkey (Super League),76,63,62,66,66,62,71,74,72,64,62,nan
+Gaziantep,4363,1331,Turkish Super League,Turkey (Super League),76,61,62,64,65,61,68,69,68,63,62,nan
+Hatayspor,4829,1331,Turkish Super League,Turkey (Super League),76,58,63,65,67,63,68,73,71,62,63,nan
+Lorient,3825,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),76,63,62,64,67,58,72,73,64,63,63,Lorient
+Vizela,11525,1017,Portuguese Premier League,Portugal (Premier League),76,54,61,68,66,65,66,73,64,62,64,nan
+Gil Vicente,4416,1017,Portuguese Premier League,Portugal (Premier League),76,58,61,66,67,64,67,66,67,64,62,nan
+Toulouse,11016,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),76,57,62,64,66,64,68,67,67,63,64,Toulouse
+Alanyaspor,596,1331,Turkish Super League,Turkey (Super League),76,56,60,64,64,64,70,70,71,63,61,nan
+Portimonense,8010,1017,Portuguese Premier League,Portugal (Premier League),76,61,63,65,68,62,71,68,70,64,61,nan
+Fatih Karagümrük,4047,1331,Turkish Super League,Turkey (Super League),75,61,62,66,67,61,67,74,65,63,63,nan
+Vitesse,11833,363,Eredivisie,Holland (Eredivisie),75,57,60,63,63,60,72,71,65,60,59,nan
+Clermont,2569,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),75,60,63,64,64,59,69,72,67,61,63,Clermont Foot
+Arouca,969,1017,Portuguese Premier League,Portugal (Premier League),75,56,61,68,66,62,70,67,63,64,64,nan
+Chaves,2428,1017,Portuguese Premier League,Portugal (Premier League),75,56,63,62,66,61,71,76,70,60,59,nan
+Santa Clara,9816,1017,Portuguese Premier League,Portugal (Premier League),75,59,62,65,66,58,67,68,63,63,62,nan
+Vitória Guimarães,11542,1017,Portuguese Premier League,Portugal (Premier League),75,61,63,66,66,63,67,70,65,66,64,nan
+Famalicão,4027,1017,Portuguese Premier League,Portugal (Premier League),75,58,62,66,65,65,66,72,69,63,63,nan
+Rio Ave,9116,1017,Portuguese Premier League,Portugal (Premier League),75,55,62,65,67,66,64,67,64,61,62,nan
+AJ Auxerre,145,773,Ligue 1 Uber Eats,France (Ligue 1 Uber Eats),75,61,63,64,65,59,71,71,68,63,62,Auxerre
+Fortuna Sittard,4209,363,Eredivisie,Holland (Eredivisie),75,58,59,63,65,60,67,65,67,61,62,nan
+Kayserispor,5878,1331,Turkish Super League,Turkey (Super League),74,57,60,64,65,63,70,64,66,63,63,nan
+FC Emmen,3756,363,Eredivisie,Holland (Eredivisie),74,58,59,63,64,57,66,68,67,61,62,nan
+Paços de Ferreira,7942,1017,Portuguese Premier League,Portugal (Premier League),74,59,60,66,65,59,67,67,63,66,63,nan
+FC Twente,3930,363,Eredivisie,Holland (Eredivisie),74,57,59,62,65,59,69,68,63,65,62,nan
+NEC,7354,363,Eredivisie,Holland (Eredivisie),74,62,59,64,63,61,66,68,68,62,62,nan
+Marítimo,6722,1017,Portuguese Premier League,Portugal (Premier League),74,54,62,65,65,64,66,69,70,64,60,nan
+Giresunspor,4433,1331,Turkish Super League,Turkey (Super League),74,58,62,62,63,58,67,69,64,59,61,nan
+Heerenveen,12267,363,Eredivisie,Holland (Eredivisie),74,56,59,64,64,61,67,68,68,63,62,nan
+Sparta,10312,363,Eredivisie,Holland (Eredivisie),73,54,58,63,63,56,68,64,63,62,60,nan
+Groningen,3775,363,Eredivisie,Holland (Eredivisie),73,60,58,62,64,58,67,62,68,59,59,nan
+Ümraniyespor,12340,1331,Turkish Super League,Turkey (Super League),73,56,61,60,63,54,66,66,63,61,58,nan
+Excelsior,3655,363,Eredivisie,Holland (Eredivisie),72,51,56,60,63,50,63,60,65,58,58,nan
+FC Volendam,3948,363,Eredivisie,Holland (Eredivisie),72,55,58,61,62,55,61,61,66,59,60,nan
+Go Ahead,4469,363,Eredivisie,Holland (Eredivisie),72,59,59,61,64,55,66,66,61,60,59,nan
+Cambuur,9344,363,Eredivisie,Holland (Eredivisie),71,55,57,59,63,56,66,64,64,62,61,nan
+RKC,8812,363,Eredivisie,Holland (Eredivisie),71,53,56,60,63,54,63,66,60,61,58,nan
+İstanbulspor,12361,1331,Turkish Super League,Turkey (Super League),71,56,59,62,64,62,63,65,61,61,58,nan
