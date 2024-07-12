@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const ratingWeights = {'gk': 0, 'def': 0.35, 'pas': 0.10, 'dri': 0, 'fin': 0, 'sta': 0.10, 'str': 0.20, 'hed': 0.15, 'men': 0.10, 'iq': 0.10};
+    const ratingWeights = {'Acceleration': 87, 'Aggression': 68, 'Agility': 87, 'Anticipation': 92, 'Balance': 82, 'Bravery': 77, 'Composure': 85, 'Concentration': 90, 'Corners': 71, 'Crossing': 75, 'Decisions': 90, 'Determination': 78, 'Dribbling': 83, 'Finishing': 87, 'First Touch': 82, 'Fitness': 72, 'Flair': 92, 'Free Kick Taking': 78, 'GK': 74, 'Heading': 80, 'Jumping Reach': 71, 'Leadership': 82, 'Long Shots': 70, 'Long Throws': 71, 'Marking': 89, 'Off the Ball': 85, 'Pace': 80, 'Passing': 80, 'Penalty Taking': 83, 'Positioning': 88, 'Stamina': 81, 'Strength': 79, 'Tackling': 80, 'Teamwork': 86, 'Technique': 81, 'Vision': 84, 'Work Rate': 72} 
     const skillsContainer = document.getElementById('skills-container');
     const outputDiv = document.getElementById('output');
 
