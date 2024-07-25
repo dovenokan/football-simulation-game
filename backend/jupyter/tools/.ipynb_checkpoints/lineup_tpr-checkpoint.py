@@ -1,5 +1,5 @@
-def Formation_Dict(formation="4-3-3"):
-    test_formation = { 'GK': 1, 'DC': 2, 'DL': 1, 'DR': 1, 'DM': 0, 'MC': 2, 'AML': 1, 'AMR': 1, 'AMC': 1, 'ST': 1 }
+def Formation_Dict(formation="4-2-3-1"):
+    test_formation = { 'GK': 1, 'DC': 2, 'DL': 1, 'DR': 1, 'DM': 0, 'MC': 2, 'AML': 1, 'AMR': 1, 'AMC': 1, 'ST': 1 } #4231
     #test_formation = { 'GK': 1, 'DC': 3, 'WBL': 1, 'WBR': 1, 'DM': 0, 'MC': 3, 'AML': 0, 'AMR': 0, 'ST': 2 }
     return test_formation
 
