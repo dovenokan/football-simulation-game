@@ -1,4 +1,5 @@
 class Attributes:
+        gk_attributes = [ "Aerial_Reach","Command_of_Area", "Communication","Eccentricity", "First_Touch", "Handling", "Kicking", "One_on_Ones",         "Punching", "Reflexes", "Rushing_Out", "Throwing"]
         attribute_list  = ['Acceleration',
          'Aerial_Reach',
          'Aggression',
