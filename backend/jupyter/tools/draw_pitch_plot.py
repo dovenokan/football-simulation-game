@@ -7,7 +7,7 @@ import ast
 import numpy as np
 
 class Draw_Pitch_Actions:
-    def __init__(self, actions_list, is_count_list, placeholder_counts_df_file_dir, ATTRIBUTE_TITLE="title", pitch_color="beige", face_color="blue", edge_color="white", count_color="white", location_color="beige"):
+    def __init__(self, actions_list, is_count_list, placeholder_counts_df_file_dir, ATTRIBUTE_TITLE="title", pitch_color="beige", face_color="blue", edge_color="white", count_color="white", location_color="beige", override_alpha=False):
         self.ATTRIBUTE_TITLE = ATTRIBUTE_TITLE
         self.actions_list = actions_list
         self.is_count_list = is_count_list
@@ -17,6 +17,7 @@ class Draw_Pitch_Actions:
         self.edge_color = edge_color
         self.count_color = count_color
         self.location_color = location_color
+        self.override_alpha = override_alpha
 
     def convert_to_tuple(self, s):
         try:
@@ -41,8 +42,11 @@ class Draw_Pitch_Actions:
         
         # counts_df['x_interval'] = self.convert_to_tuple(counts_df['x_interval'])
         # counts_df['y_interval'] = self.convert_to_tuple(counts_df['y_interval'])
-        counts_df["alpha"] = self.MinMaxNormalization(counts_df["count"])
-        
+        if self.override_alpha: 
+            counts_df["alpha"] = 0.35
+        else:
+            counts_df["alpha"] = self.MinMaxNormalization(counts_df["count"])
+
         pitch = Pitch(pitch_type='statsbomb', pitch_color=self.pitch_color, line_color='black')
         fig, ax = plt.subplots(figsize=(8, 12))
         pitch.draw(ax=ax)
