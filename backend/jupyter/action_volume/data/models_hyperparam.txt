@@ -1,0 +1,30 @@
+
+                    | Target | Filter Value | Top Players N | Top Columns N | Test Size | Mean Absolute Error (MAE) |
+                    |--------|--------------|---------------|---------------|-----------|----------------------------|
+                    | Att.1 | 1300 | 20 | 10 | 0.1 | 86.3097872753435 |
+                    
+
+
+                    | Target | Filter Value | Top Players N | Top Columns N | Test Size | Mean Absolute Error (MAE) |
+                    |--------|--------------|---------------|---------------|-----------|----------------------------|
+                    | Att.1 | 1300 | 20 | 16 | 0.1 | 85.31336890538557 |
+                    
+
+
+                    | Target | Filter Value | Top Players N | Top Columns N | Test Size | Mean Absolute Error (MAE) |
+                    |--------|--------------|---------------|---------------|-----------|----------------------------|
+                    | Att.1 | 1300 | 30 | 13 | 0.1 | 82.87638953168752 |
+                    
+
+
+                    | Target | Filter Value | Top Players N | Top Columns N | Test Size | Mean Absolute Error (MAE) |
+                    |--------|--------------|---------------|---------------|-----------|----------------------------|
+                    | Att.1 | 1300 | 40 | 13 | 0.1 | 82.87638953168745 |
+                    
+
+
+                    | Target | Filter Value | Top Players N | Top Columns N | Test Size | Mean Absolute Error (MAE) |
+                    |--------|--------------|---------------|---------------|-----------|----------------------------|
+                    | Att.1 | 1300 | 80 | 19 | 0.1 | 82.0886405039872 |
+                    
+
