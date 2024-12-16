@@ -1,0 +1,1 @@
+# team_model.py - Placeholder for the team_model module.

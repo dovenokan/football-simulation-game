@@ -1,0 +1,1 @@
+# set_pieces.py - Placeholder for the set_pieces module.

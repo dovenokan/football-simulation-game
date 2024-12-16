@@ -1,0 +1,1 @@
+# competitions.py - Placeholder for the competitions module.
