@@ -1,181 +1,64 @@
+from enum import Enum
+from dataclasses import dataclass, field
+from typing import List, Optional, Dict, Tuple
 import random
 import pandas as pd
 import os
 import math
-from enum import Enum
-from abc import abstractmethod, ABC
 
-class DirectionType(Enum):
-    TOP_LEFT = 1
-    TOP_CENTER = 2
-    TOP_RIGHT = 3
-    MIDDLE_LEFT = 4
-    CENTER = 5
-    MIDDLE_RIGHT = 6
-    BOTTOM_LEFT = 7
-    BOTTOM_CENTER = 8
-    BOTTOM_RIGHT = 9
+class Direction(Enum):
+    TOP_LEFT = "Top Left"
+    TOP_CENTER = "Top Center"
+    TOP_RIGHT = "Top Right"
+    MIDDLE_LEFT = "Middle Left"
+    CENTER = "Center"
+    MIDDLE_RIGHT = "Middle Right"
+    BOTTOM_LEFT = "Bottom Left"
+    BOTTOM_CENTER = "Bottom Center"
+    BOTTOM_RIGHT = "Bottom Right"
 
-    @classmethod
-    def from_string(cls, direction: str) -> 'DirectionType':
-        direction_mapping = {
-            "Top Left": cls.TOP_LEFT,
-            "Top Center": cls.TOP_CENTER,
-            "Top Right": cls.TOP_RIGHT,
-            "Middle Left": cls.MIDDLE_LEFT,
-            "Center": cls.CENTER,
-            "Middle Right": cls.MIDDLE_RIGHT,
-            "Bottom Left": cls.BOTTOM_LEFT,
-            "Bottom Center": cls.BOTTOM_CENTER,
-            "Bottom Right": cls.BOTTOM_RIGHT
-        }
-        return direction_mapping.get(direction, cls.CENTER)
+class FootPreference(Enum):
+    RIGHT = "Right"
+    LEFT = "Left"
 
-    @property
-    def direction_factor(self) -> int:
-        return self.value
+class BodyPart(Enum):
+    FOOT = "Foot"
+    HEAD = "Head"
 
-
-class FootPreferenceType(Enum):
-    RIGHT = 1
-    LEFT = 2
-
-    @classmethod
-    def from_string(cls, foot_preference: str) -> 'FootPreferenceType':
-        foot_mapping = {
-            "Right": cls.RIGHT,
-            "Left": cls.LEFT
-        }
-        result = foot_mapping.get(foot_preference)
-        if result is None:
-            raise ValueError(f'Invalid foot preference: {foot_preference}')
-        return result
-
-    @property
-    def foot_factor(self) -> int:
-        return self.value
-
-
-class OutcomeType(Enum):
-    GOAL = 1
-    SAVED = 2
-    OUT = 3
-    HIT_WOODWORK = 4
-    BLOCKED_BY_DEFENDER = 5
-    BLOCK_DEFLECTED = 6
-
-    @classmethod
-    def from_string(cls, outcome: str) -> 'OutcomeType':
-        outcome_mapping = {
-            "Goal": cls.GOAL,
-            "Saved": cls.SAVED,
-            "Out": cls.OUT,
-            "Woodwork": cls.HIT_WOODWORK,
-            "Blocked": cls.BLOCKED_BY_DEFENDER,
-            "Deflected": cls.BLOCK_DEFLECTED
-        }
-        result = outcome_mapping.get(outcome)
-        if result is None:
-            raise ValueError(f'Invalid outcome type: {outcome}')
-        return result
-
-    @property
-    def outcome_factor(self) -> int:
-        return self.value
-
-
-class BodyType(Enum):
-    FOOT = 1
-    HEADER = 2
-
-    @classmethod
-    def from_string(cls, body: str) -> 'BodyType':
-        body_mapping = {
-            "Foot": cls.FOOT,
-            "Header": cls.HEADER
-        }
-        result = body_mapping.get(body)
-        if result is None:
-            raise ValueError(f'Invalid body type: {body}')
-        return result
-
-    @property
-    def body_factor(self) -> int:
-        return self.value
-
-
-class ShotCategoryType(Enum):
-    ON_TARGET = 1
-    OFF_TARGET = 2
-    BLOCKED = 3
-
-    @classmethod
-    def from_string(cls, shotcategory: str) -> 'ShotCategoryType':
-        shotcategory_mapping = {
-            "ON TARGET": cls.ON_TARGET,
-            "OFF TARGET": cls.OFF_TARGET,
-            "BLOCKED": cls.BLOCKED
-        }
-        result = shotcategory_mapping.get(shotcategory)
-        if result is None:
-            raise ValueError(f'Invalid shot category type: {shotcategory}')
-        return result
-
-    @property
-    def shotcategory_factor(self) -> int:
-        return self.value
-        
-
-ON_TARGET_OUTCOMES = {
-    OutcomeType.GOAL: 0.30,
-    OutcomeType.SAVED: 0.70,
-}
-
-OFF_TARGET_OUTCOMES = {
-    OutcomeType.OUT: 0.95,
-    OutcomeType.HIT_WOODWORK: 0.05
-}
-
-BLOCKED_OUTCOMES = {
-    OutcomeType.BLOCKED_BY_DEFENDER: 0.70,
-    OutcomeType.BLOCK_DEFLECTED: 0.30
-}
-
-SHOT_CATEGORY_PROBABILITIES = {
-    ShotCategoryType.ON_TARGET: 0.32,
-    ShotCategoryType.OFF_TARGET: 0.50,
-    ShotCategoryType.BLOCKED: 0.18 
-}
-
-
+@dataclass
 class Location:
-    def __init__(self, grid_x, grid_y, grid_length=24, grid_width=16):
-        self.grid_x = grid_x
-        self.grid_y = grid_y
-        self.grid_length = grid_length
-        self.grid_width = grid_width
-        self.x = (grid_x / grid_length) * 105
-        self.y = (grid_y / grid_width) * 68
+    grid_x: int
+    grid_y: int
+    grid_length: int = 24
+    grid_width: int = 16
+    pitch_length: int = 105
+    pitch_width: int = 68
 
-    def calculate_distance_to_goal(self):
-        goal_x = 105
-        goal_y = 68 / 2
+    x: float = field(init=False)
+    y: float = field(init=False)
+
+    def __post_init__(self):
+        self.x = (self.grid_x / self.grid_length) * self.pitch_length
+        self.y = (self.grid_y / self.grid_width) * self.pitch_width
+
+    def distance_to_goal(self) -> float:
+        goal_x = self.pitch_length
+        goal_y = self.pitch_width / 2
         return math.sqrt((self.x - goal_x) ** 2 + (self.y - goal_y) ** 2)
 
-
 class ExpectedGoals:
-    def __init__(self, location: Location, body_type: BodyType):
+    def __init__(self, location: Location, body_part: BodyPart):
         self.location = location
-        self.body_type = body_type
+        self.body_part = body_part
 
     def calculate_xg(self):
-        distance = self.location.calculate_distance_to_goal()
+        distance = self.location.distance_to_goal()
         FOOT_SHOT_FORMULA = 0.85 * math.exp(-0.13 * distance)
         HEADER_SHOT_FORMULA = 1.13 * math.exp(-0.27 * distance)
 
-        if BodyType.FOOT == self.body_type:
+        if BodyPart.FOOT == self.body_part:
             return FOOT_SHOT_FORMULA
-        elif BodyType.HEADER == self.body_type:
+        elif BodyPart.HEAD == self.body_part:
             return HEADER_SHOT_FORMULA
         return FOOT_SHOT_FORMULA
         
@@ -184,420 +67,636 @@ class ExpectedGoals:
         xg_value = self.calculate_xg()
         return max(0, min(xg_value, 1))
 
+@dataclass
+class TeamSkill:
+    overall: float
+    attack: float
+    defense: float
+    tpr: float = 0.5  # Default TPR value
+    
+    def __post_init__(self):
+        for attr in ['overall', 'attack', 'defense', 'tpr']:
+            value = getattr(self, attr)
+            if not 0 <= value <= 1:
+                raise ValueError(f"{attr} must be between 0 and 1")
+    
+    @property
+    def effective_attack(self) -> float:
+        return 0.5 * self.attack + 0.5 * self.tpr
 
-class ShotOutcome(ABC):
-    @abstractmethod
-    def determine(self) -> OutcomeType:
-        pass
+    @property
+    def effective_defense(self) -> float:
+        return 0.5 * self.defense + 0.5 * self.tpr
 
+    @property
+    def effective_overall(self) -> float:
+        return 0.5 * self.overall + 0.5 * self.tpr
 
-class ShotOnTargetOutcome(ShotOutcome):
-    def __init__(self, xg):
-        self.xg = xg
+@dataclass
+class PlayerSkill:
+    shooting: float
+    finishing: float
+    technique: float
+    composure: float
+    tpr: float = 0.5  # Default TPR value
+    
+    def __post_init__(self):
+        for attr in ['shooting', 'finishing', 'technique', 'composure', 'tpr']:
+            value = getattr(self, attr)
+            if not 0 <= value <= 1:
+                raise ValueError(f"{attr} must be between 0 and 1")
+    
+    @property
+    def overall_shooting_skill(self) -> float:
+        base_skill = (self.shooting * 0.4 + 
+                     self.finishing * 0.3 + 
+                     self.technique * 0.2 + 
+                     self.composure * 0.1)
+        return 0.5 * base_skill + 0.5 * self.tpr
 
-    def determine(self) -> OutcomeType:
-        random_outcome = random.random()
-        total = 0
-        outcomes = [OutcomeType.GOAL, OutcomeType.SAVED]
+@dataclass
+class GoalkeeperSkill:
+    reflexes: float
+    positioning: float
+    handling: float
+    aerial_reach: float
+    
+    def __post_init__(self):
+        for attr in ['reflexes', 'positioning', 'handling', 'aerial_reach']:
+            value = getattr(self, attr)
+            if not 0 <= value <= 1:
+                raise ValueError(f"{attr} must be between 0 and 1")
+    
+    @property
+    def overall_goalkeeper_skill(self) -> float:
+        return (self.reflexes * 0.4 + 
+                self.positioning * 0.4 + 
+                self.handling * 0.2)
 
-        for outcome in outcomes:
-            prob = ON_TARGET_OUTCOMES[outcome]
-            total += prob
-            if random_outcome < total:
-                return outcome
-        return OutcomeType.SAVED
+@dataclass
+class ShotStyle:
+    power: float  # 0-1 scale, where 1 is maximum power
+    curve: float  # 0-1 scale, where 1 is maximum curve
+    
+    def __post_init__(self):
+        for attr in ['power', 'curve']:
+            value = getattr(self, attr)
+            if not 0 <= value <= 1:
+                raise ValueError(f"{attr} must be between 0 and 1")
 
+class ShotOutcome(Enum):
+    # On Target Outcomes
+    GOAL = "GOAL"
+    SAVED_CATCH = "SAVED_CATCH"
+    SAVED_PARRY = "SAVED_PARRY"
+    SAVED_DEFLECT = "SAVED_DEFLECT"
+    
+    # Off Target Outcomes
+    WIDE_NEAR = "WIDE_NEAR"  # Just wide
+    WIDE_FAR = "WIDE_FAR"    # Way off target
+    HIGH = "HIGH"            # Over the crossbar
+    WOODWORK = "WOODWORK"    # Hit the post or crossbar
+    
+    # Blocked Outcomes
+    BLOCKED_DEFLECTED = "BLOCKED_DEFLECTED"  # Blocked and deflected
+    BLOCKED_OUT = "BLOCKED_OUT"              # Blocked out for a corner
+    BLOCKED_CAUGHT = "BLOCKED_CAUGHT"        # Blocked and caught by defender
 
-class ShotOffTargetOutcome(ShotOutcome):
-    def determine(self) -> OutcomeType:
-        random_outcome = random.random()
-        total = 0
-        outcomes = [OutcomeType.OUT, OutcomeType.HIT_WOODWORK]
+class ShotQualityCalculator:
+    
+    # Sub-probabilities for save types when shot is saved
+    SAVE_TYPE_PROBABILITIES = {
+        "SAVED_CATCH": 0.4,    # Clean catch
+        "SAVED_PARRY": 0.35,   # Parried away
+        "SAVED_DEFLECT": 0.25  # Deflected but might create rebound
+    }
+    
+    @staticmethod
+    def calculate_goal_probability(
+        shooter_skill: PlayerSkill,
+        goalkeeper_skill: GoalkeeperSkill,
+        location: Location,
+        shot_style: ShotStyle,
+        luck: float,
+        body_part: BodyPart = BodyPart.FOOT  # Default to foot shot
+    ) -> tuple[float, float]:
 
-        for outcome in outcomes:
-            prob = OFF_TARGET_OUTCOMES[outcome]
-            total += prob
-            if random_outcome < total:
-                return outcome
-        return OutcomeType.OUT
-
-
-class ShotBlockedOutcome(ShotOutcome):
-    def determine(self) -> OutcomeType:
-        random_outcome = random.random()
-        total = 0
-        outcomes = [OutcomeType.BLOCKED_BY_DEFENDER, OutcomeType.BLOCK_DEFLECTED]
-
-        for outcome in outcomes:
-            prob = BLOCKED_OUTCOMES[outcome]
-            total += prob
-            if random_outcome < total:
-                return outcome
-        return OutcomeType.BLOCKED_BY_DEFENDER
-
-
-class ShotOutcomeManager:
-    def __init__(self):
-        self.on_target_outcome = ShotOnTargetOutcome(ExpectedGoals(Location(21, 8), BodyType.FOOT))
-        self.off_target_outcome = ShotOffTargetOutcome()
-        self.blocked_shot_outcome = ShotBlockedOutcome()
-        self.shot_category_type = None
-
-    def set_shot_category_type(self, shot_category_type: str):
-        if shot_category_type == "ON_TARGET":
-            self.shot_category_type = "on_target"
-        elif shot_category_type == "OFF_TARGET":
-            self.shot_category_type = "off_target"
-        elif shot_category_type == "BLOCKED":
-            self.shot_category_type = "blocked"
-        else:
-            raise ValueError("Invalid outcome type. Must be 'ON_TARGET', 'OFF_TARGET', or 'BLOCKED'")
-
-    def determine_outcome(self) -> OutcomeType:
-        if self.shot_category_type is None:
-            raise ValueError("Outcome type must be set before determining outcome")
-
-        if self.shot_category_type == "on_target":
-            return self.on_target_outcome.determine()
-        elif self.shot_category_type == "off_target":
-            return self.off_target_outcome.determine()
-        else:
-            return self.blocked_shot_outcome.determine()
-
-    def determine_shot_category(self) -> ShotCategoryType:
-        random_outcome = random.random()
-        total = 0
-        categories = [ShotCategoryType.ON_TARGET, ShotCategoryType.OFF_TARGET, ShotCategoryType.BLOCKED]
-
-        for category in categories:
-            prob = SHOT_CATEGORY_PROBABILITIES[category]
-            total += prob
-            if random_outcome < total:
-                return category
-        return ShotCategoryType.BLOCKED
-
-    def determine_shot_outcome(self) -> OutcomeType:
-        shot_category = self.determine_shot_category()
-        self.set_shot_category_type(shot_category.name)
-        return self.determine_outcome()
-
-
-class PlayerSkills:
-    def __init__(self, player_data):
-        # Technical attributes
-        self.finishing = normalize(player_data.get("Finishing", 50))
-        self.technique = normalize(player_data.get("Technique", 50))
-        self.first_touch = normalize(player_data.get("First_Touch", 50))
-        self.passing = normalize(player_data.get("Passing", 50))
-        self.dribbling = normalize(player_data.get("Dribbling", 50))
-        self.flair = normalize(player_data.get("Flair", 50))
-        self.tackling = normalize(player_data.get("Tackling", 50))
-        self.heading = normalize(player_data.get("Heading", 50))
-        self.marking = normalize(player_data.get("Marking", 50))
-        self.crossing = normalize(player_data.get("Crossing", 50))
-        self.corners = normalize(player_data.get("Corners", 50))
-        self.positioning = normalize(player_data.get("Positioning", 50))
+        # Calculate Expected Goals (xG)
+        xg = ExpectedGoals(location, body_part).get_xg_factor()
         
-        # Mental attributes
-        self.composure = normalize(player_data.get("Composure", 50))
-        self.decisions = normalize(player_data.get("Decisions", 50))
-        self.vision = normalize(player_data.get("Vision", 50))
-        self.anticipation = normalize(player_data.get("Anticipation", 50))
-        self.off_the_ball = normalize(player_data.get("Off_the_Ball", 50))
-        self.concentration = normalize(player_data.get("Concentration", 50))
-        self.determination = normalize(player_data.get("Determination", 50))
-        self.work_rate = normalize(player_data.get("Work_Rate", 50))
-        
-        # Physical attributes
-        self.acceleration = normalize(player_data.get("Acceleration", 50))
-        self.agility = normalize(player_data.get("Agility", 50))
-        self.balance = normalize(player_data.get("Balance", 50))
-        self.strength = normalize(player_data.get("Strength", 50))
-        self.stamina = normalize(player_data.get("Stamina", 50))
-        self.pace = normalize(player_data.get("Pace", 50))
-        self.jumping_reach = normalize(player_data.get("Jumping_Reach", 50))
-        self.natural_fitness = normalize(player_data.get("Natural_Fitness", 50))
-
-    def get_attacking_skill(self):
-        # Calculate attacking skill based on relevant attributes
-        technical_factor = (
-            self.finishing * 0.25 +
-            self.technique * 0.15 +
-            self.first_touch * 0.15 +
-            self.dribbling * 0.15 +
-            self.flair * 0.1
+        # Shot power and placement quality
+        shot_quality = (
+            shooter_skill.finishing * 0.2 +
+            shooter_skill.composure * 0.1 +
+            shot_style.power * 0.1 +
+            shot_style.curve * 0.1 +
+            shooter_skill.tpr * 0.5
         )
         
-        mental_factor = (
-            self.composure * 0.15 +
-            self.decisions * 0.15 +
-            self.vision * 0.1 +
-            self.anticipation * 0.15 +
-            self.off_the_ball * 0.15 +
-            self.work_rate * 0.1
+        # Goalkeeper save ability
+        save_ability = (
+            goalkeeper_skill.reflexes * 0.4 +
+            goalkeeper_skill.aerial_reach * 0.3 +
+            goalkeeper_skill.positioning * 0.3
         )
         
-        physical_factor = (
-            self.acceleration * 0.15 +
-            self.agility * 0.15 +
-            self.pace * 0.15 +
-            self.balance * 0.1
+        # Apply modifiers
+        quality_modifier = (
+            shot_quality * 0.05 +
+            (1 - save_ability) * 0.05 +
+            xg * 0.9  # Replace distance_factor with xG influence
         )
         
-        return (technical_factor * 0.4 + mental_factor * 0.4 + physical_factor * 0.2)
+        # Apply luck factor (can swing by ±15%)
+        luck_impact = 0 # (luck - 0.5) * 0.05
+        final_modifier = xg + luck_impact + shot_quality*0.05 # quality_modifier * (1 + luck_impact)
+        
+        # Calculate final probability
+        goal_probability = final_modifier
+        
+        return max(0, min(0.95, min(goal_probability, 1))), xg, {
+            "shot_quality": shot_quality,
+            "save_ability": save_ability,
+            "quality_modifier": quality_modifier,
+            "luck_impact": luck_impact,
+            "final_modifier": final_modifier
+        }
+    
+    @staticmethod
+    def determine_save_type() -> str:
+        """Determine the type of save if the shot is saved"""
+        rand = random.random()
+        cumulative = 0
+        
+        for save_type, prob in ShotQualityCalculator.SAVE_TYPE_PROBABILITIES.items():
+            cumulative += prob
+            if rand <= cumulative:
+                return save_type
+        
+        return "SAVED_CATCH"  # fallback
 
-    def get_defensive_skill(self):
-        # Calculate defensive skill based on relevant attributes
-        technical_factor = (
-            self.tackling * 0.25 +
-            self.heading * 0.15 +
-            self.marking * 0.2
+class ShotProbabilityCalculator:
+    # Base probabilities for main categories
+    BASE_PROBABILITIES = {
+        "ON_TARGET": 0.32,
+        "OFF_TARGET": 0.50,
+        "BLOCKED": 0.18
+    }
+    
+    # Sub-probabilities within each main category
+    ON_TARGET_PROBABILITIES = {
+        ShotOutcome.GOAL: 0.28,
+        ShotOutcome.SAVED_CATCH: 0.37,
+        ShotOutcome.SAVED_PARRY: 0.20,  
+        ShotOutcome.SAVED_DEFLECT: 0.15
+    }
+    
+    OFF_TARGET_PROBABILITIES = {
+        ShotOutcome.WIDE_NEAR: 0.35,
+        ShotOutcome.WIDE_FAR: 0.25,
+        ShotOutcome.HIGH: 0.25,
+        ShotOutcome.WOODWORK: 0.15
+    }
+    
+    BLOCKED_PROBABILITIES = {
+        ShotOutcome.BLOCKED_DEFLECTED: 0.40,
+        ShotOutcome.BLOCKED_OUT: 0.35,
+        ShotOutcome.BLOCKED_CAUGHT: 0.25
+    }
+    
+    @staticmethod
+    def calculate_skill_modifier(
+        attacking_team_skill: TeamSkill,
+        defender_team_skill: TeamSkill,
+        shooter_skill: PlayerSkill,
+        goalkeeper_skill: GoalkeeperSkill,
+        location: Location,
+        shot_style: ShotStyle,
+        luck: float
+    ) -> float:
+        # Base skill impact
+        attack_quality = (
+            shooter_skill.overall_shooting_skill * 0.5 +
+            attacking_team_skill.effective_attack * 0.3
         )
         
-        mental_factor = (
-            self.positioning * 0.2 +
-            self.anticipation * 0.15 +
-            self.concentration * 0.15 +
-            self.composure * 0.1
+        # Defense quality - removed goalkeeper influence for shot accuracy
+        defense_quality = defender_team_skill.effective_defense * 0.8  # Increased defender team impact
+        
+        # Distance penalty
+        distance_factor = 1 - (location.distance_to_goal() / (location.pitch_length * 1.5))
+        distance_factor = max(0, distance_factor)  # Ensure it's not negative
+        
+        # Shot style impact
+        style_impact = (shot_style.power * 0.6 + 
+                       shot_style.curve * 0.4)
+        
+        # Calculate final modifier
+        skill_modifier = (
+            attack_quality * 0.4 +
+            (1 - defense_quality) * 0.3 +
+            distance_factor * 0.2 +
+            style_impact * 0.1
         )
         
-        physical_factor = (
-            self.strength * 0.2 +
-            self.jumping_reach * 0.15 +
-            self.pace * 0.15 +
-            self.stamina * 0.1 +
-            self.natural_fitness * 0.1
-        )
+        # Apply luck factor (can swing the modifier by ±20%)
+        luck_impact = (luck - 0.5) * 0.05  # Convert luck to -0.2 to +0.2 range
+        final_modifier = skill_modifier * (1 + luck_impact)
         
-        return (technical_factor * 0.35 + mental_factor * 0.35 + physical_factor * 0.3)
+        # Clamp the modifier between 0.5 and 1.5
+        return max(0.5, min(1.5, final_modifier))
 
-    def get_goalkeeper_skill(self):
-        # Goalkeeper specific attributes remain unchanged
-        handling = normalize(self.player_data.get("Handling", 50))
-        reflexes = normalize(self.player_data.get("Reflexes", 50))
-        one_on_ones = normalize(self.player_data.get("One_on_Ones", 50))
-        positioning = normalize(self.player_data.get("Positioning", 50))
-        
-        return (handling * 0.3 + reflexes * 0.3 + one_on_ones * 0.2 + positioning * 0.2)
-
-
-class TeamSkills:
-    def __init__(self, team_data):
-        # Team attributes
-        self.finishing = normalize(team_data.get("Finishing", 50))
-        self.technique = normalize(team_data.get("Technique", 50))
-        self.decisions = normalize(team_data.get("Decisions", 50))
-        self.teamwork = normalize(team_data.get("Teamwork", 50))
-        self.vision = normalize(team_data.get("Vision", 50))
-        self.work_rate = normalize(team_data.get("Work_Rate", 50))
-        self.communication = normalize(team_data.get("Communication", 50))
-        self.creativity = normalize(team_data.get("Creativity", 50))
-        self.crossing = normalize(team_data.get("Crossing", 50))
-        self.corners = normalize(team_data.get("Corners", 50))
-        self.leadership = normalize(team_data.get("Leadership", 50))
-
-    def get_team_attack_factor(self):
-        return (
-            self.finishing * 0.2 +
-            self.technique * 0.15 +
-            self.decisions * 0.15 +
-            self.teamwork * 0.15 +
-            self.vision * 0.1 +
-            self.work_rate * 0.1 +
-            self.creativity * 0.1 +
-            self.crossing * 0.05
-        )
-
-    def get_team_defense_factor(self):
-        return (
-            self.teamwork * 0.25 +
-            self.communication * 0.2 +
-            self.leadership * 0.15 +
-            self.decisions * 0.2 +
-            self.work_rate * 0.2
-        )
-
-
-class Luck:
-    def __init__(self, min_luck, max_luck):
-        self.min_luck = min_luck
-        self.max_luck = max_luck
-
-    def get_luck(self):
-        return random.uniform(self.min_luck, self.max_luck)
-        
-
-class ShotEvent:
-    def __init__(self, direction, location, foot_preference, xG):
-        self.direction = direction
+class Shot_Event:
+    def __init__(
+        self,
+        attacking_team_skill: TeamSkill,
+        defender_team_skill: TeamSkill,
+        attacking_team_shooter_skill: PlayerSkill,
+        defender_team_goalkeeper_skill: GoalkeeperSkill,
+        luck: float,
+        location: Location,
+        foot_preference: FootPreference,
+        body_part: BodyPart,
+        direction: Direction,
+        shot_style: ShotStyle = None
+    ):
+        self.attacking_team_skill = attacking_team_skill
+        self.defender_team_skill = defender_team_skill
+        self.attacking_team_shooter_skill = attacking_team_shooter_skill
+        self.defender_team_goalkeeper_skill = defender_team_goalkeeper_skill
+        self.luck = luck
         self.location = location
         self.foot_preference = foot_preference
-        self.xG = xG
+        self.body_part = body_part
+        self.direction = direction
+        self.shot_style = shot_style or ShotStyle(power=0.5, curve=0.5)
+        self.probability_calculator = ShotProbabilityCalculator()
+        self.quality_calculator = ShotQualityCalculator()
 
-    def calculate_base_probability(self):
-        base_probability = 0.1  # Base probability of 50%
-        return base_probability
-
-
-class GoalProbability:
-    def __init__(self, attacker_player, defender_player, shot_event, shot_outcome):
-        self.attacker_player = attacker_player
-        self.defender_player = defender_player
-        self.shot_event = shot_event
-        self.shot_outcome = shot_outcome
+    def determine_shot_outcome(self) -> ShotOutcome:
+        # Calculate skill modifier
+        skill_modifier = self.probability_calculator.calculate_skill_modifier(
+            self.attacking_team_skill,
+            self.defender_team_skill,
+            self.attacking_team_shooter_skill,
+            self.defender_team_goalkeeper_skill,
+            self.location,
+            self.shot_style,
+            self.luck
+        )
         
-    def calculate_striker_factor(self):
-        # Key attributes for strikers
-        finishing = normalize(self.attacker_player["Finishing"])
-        composure = normalize(self.attacker_player["Composure"])
-        technique = normalize(self.attacker_player["Technique"])
-        off_the_ball = normalize(self.attacker_player["Off_the_Ball"])
+        # Adjust base probabilities based on skill modifier
+        adjusted_probs = self._adjust_probabilities(skill_modifier)
         
-        # Calculate weighted average of striker attributes
-        return (finishing * 0.4 + composure * 0.25 + technique * 0.2 + off_the_ball * 0.15)
+        # Determine main outcome category
+        main_outcome = random.choices(
+            list(adjusted_probs.keys()),
+            weights=list(adjusted_probs.values())
+        )[0]
+        
+        # Select specific outcome based on the main category
+        if main_outcome == "ON_TARGET":
+            return self._select_on_target_outcome(skill_modifier)
+        elif main_outcome == "OFF_TARGET":
+            return self._select_off_target_outcome(skill_modifier)
+        else:  # BLOCKED
+            return self._select_blocked_outcome(skill_modifier)
+
+    def _adjust_probabilities(self, skill_modifier: float) -> dict:
+        """Adjust base probabilities based on skill modifier."""
+        base_probs = self.probability_calculator.BASE_PROBABILITIES.copy()
+        
+        # Increase ON_TARGET probability for higher skill
+        base_probs["ON_TARGET"] *= skill_modifier
+        
+        # Decrease OFF_TARGET and BLOCKED probabilities proportionally
+        remaining_prob = 1 - base_probs["ON_TARGET"]
+        if remaining_prob > 0:
+            off_target_ratio = self.probability_calculator.BASE_PROBABILITIES["OFF_TARGET"] / (
+                self.probability_calculator.BASE_PROBABILITIES["OFF_TARGET"] + 
+                self.probability_calculator.BASE_PROBABILITIES["BLOCKED"]
+            )
+            base_probs["OFF_TARGET"] = remaining_prob * off_target_ratio
+            base_probs["BLOCKED"] = remaining_prob * (1 - off_target_ratio)
+        else:
+            base_probs["ON_TARGET"] = 1
+            base_probs["OFF_TARGET"] = 0
+            base_probs["BLOCKED"] = 0
+        
+        return base_probs
+
+    def _select_on_target_outcome(self, skill_modifier: float) -> ShotOutcome:
+        probs = self.probability_calculator.ON_TARGET_PROBABILITIES.copy()
+        
+        # Increase GOAL probability for higher skill
+        probs[ShotOutcome.GOAL] *= skill_modifier
+        
+        # Adjust other probabilities proportionally
+        total = sum(probs.values())
+        probs = {k: v/total for k, v in probs.items()}
+        
+        goal_probability, xg = self.quality_calculator.calculate_goal_probability(
+            self.attacking_team_shooter_skill,
+            self.defender_team_goalkeeper_skill,
+            self.location,
+            self.shot_style,
+            self.luck,
+            self.body_part
+        )
+        
+        if random.random() < goal_probability:
+            return ShotOutcome.GOAL
+        else:
+            save_type = self.quality_calculator.determine_save_type()
+            return ShotOutcome[save_type]
+
+    def _select_off_target_outcome(self, skill_modifier: float) -> ShotOutcome:
+        probs = self.probability_calculator.OFF_TARGET_PROBABILITIES.copy()
+        
+        # Higher skill means more likely to be WIDE_NEAR or WOODWORK than completely off
+        if skill_modifier > 1:
+            probs[ShotOutcome.WIDE_NEAR] *= skill_modifier
+            probs[ShotOutcome.WOODWORK] *= skill_modifier
+            probs[ShotOutcome.WIDE_FAR] /= skill_modifier
+        
+        total = sum(probs.values())
+        probs = {k: v/total for k, v in probs.items()}
+        
+        return random.choices(
+            list(probs.keys()),
+            weights=list(probs.values())
+        )[0]
+
+    def _select_blocked_outcome(self, skill_modifier: float) -> ShotOutcome:
+        probs = self.probability_calculator.BLOCKED_PROBABILITIES.copy()
+        
+        # Higher skill means more likely to get a deflection than complete block
+        if skill_modifier > 1:
+            probs[ShotOutcome.BLOCKED_DEFLECTED] *= skill_modifier
+            probs[ShotOutcome.BLOCKED_CAUGHT] /= skill_modifier
+        
+        total = sum(probs.values())
+        probs = {k: v/total for k, v in probs.items()}
+        
+        return random.choices(
+            list(probs.keys()),
+            weights=list(probs.values())
+        )[0]
+
+class PlayerDataConfig:
+    # Skill column mappings
+    OUTFIELD_COLUMNS = {
+        'shooting': 'Finishing',
+        'finishing': 'Finishing',
+        'technique': 'Technique',
+        'composure': 'Composure',
+        'tpr': 'tpr'
+    }
     
-    def calculate_goalkeeper_factor(self):
-        # Key attributes for goalkeepers
-        handling = normalize(self.defender_player["Handling"])
-        reflexes = normalize(self.defender_player["Anticipation"])  # Using anticipation as reflexes
-        one_on_ones = normalize(self.defender_player["One_on_Ones"])
-        positioning = normalize(self.defender_player["Positioning"])
-        
-        # Calculate weighted average of goalkeeper attributes
-        return (handling * 0.3 + reflexes * 0.3 + one_on_ones * 0.2 + positioning * 0.2)
+    GOALKEEPER_COLUMNS = {
+        'reflexes': 'Reflexes',
+        'positioning': 'Positioning',
+        'handling': 'Handling',
+        'aerial_reach': 'Aerial_Reach'
+    }
     
-    def calculate_team_factor(self):
-        return 1  # Default factor if no team data is used
+    # Player info columns
+    PLAYER_INFO = {
+        'name': 'Name',
+        'position': 'Position',
+        'foot': 'Preferred Foot',
+        'team': 'Club'
+    }
     
-    def calculate_distance_factor(self):
-        distance = self.shot_event.location.calculate_distance_to_goal()
-        # Exponential decay based on distance
-        return math.exp(-0.1 * distance)
+    # Normalization settings
+    MAX_SKILL_VALUE = 100
     
-    def calculate_goal_probability(self):
-        return self.shot_outcome.calculate_final_probability(self.attacker_player, self.defender_player) * self.shot_event.xG.get_xg_factor()
+    @classmethod
+    def normalize_skill(cls, value: float) -> float:
+        """Normalize skill value to 0-1 range"""
+        return value / cls.MAX_SKILL_VALUE
 
+class TeamDataConfig:
+    # Team attribute columns
+    TEAM_COLUMNS = {
+        'name': 'Club',
+        'overall': 'tpr',
+        'tpr': 'tpr',
+        'attack_columns': ['Finishing', 'Off_the_Ball', 'Dribbling'],
+        'defense_columns': ['Tackling', 'Marking', 'Positioning']
+    }
+    
+    # Normalization settings
+    MAX_SKILL_VALUE = 100
+    
+    # Weights for composite attributes
+    ATTACK_WEIGHTS = {'Finishing': 0.4, 'Off_the_Ball': 0.3, 'Dribbling': 0.3}
+    DEFENSE_WEIGHTS = {'Tackling': 0.4, 'Marking': 0.3, 'Positioning': 0.3}
+    
+    @classmethod
+    def normalize_skill(cls, value: float) -> float:
+        """Normalize skill value to 0-1 range"""
+        return value / cls.MAX_SKILL_VALUE
+    
+    @classmethod
+    def calculate_weighted_average(cls, values: dict, weights: dict) -> float:
+        """Calculate weighted average of skills"""
+        return sum(values[k] * weights[k] for k in weights.keys())
 
-class ShotOnTargetProbability:
-    def __init__(self, shot_event, attacker_skills, defender_skills, attacker_team, defender_team, luck):
-        self.shot_event = shot_event
-        self.attacker_skills = attacker_skills
-        self.defender_skills = defender_skills
-        self.luck = luck
-        self.attacker_team = attacker_team
-        self.defender_team = defender_team
-        self.outcome_manager = ShotOutcomeManager()
-
-    def calculate_final_probability(self, attacker_team, defender_team):
-        # Base probability from expected goals
-        base_prob = self.shot_event.xG.get_xg_factor()
+def load_team_data(csv_path: str, config: TeamDataConfig = TeamDataConfig) -> Dict[str, TeamSkill]:
+    """
+    Load team data from CSV file and return a dictionary of TeamSkill objects.
+    
+    Args:
+        csv_path: Path to the CSV file containing team data
+        config: Configuration class for data loading (default: TeamDataConfig)
+    
+    Returns:
+        Dictionary mapping team names to TeamSkill objects
+    """
+    teams_df = pd.read_csv(csv_path)
+    team_skills = {}
+    
+    for _, row in teams_df.iterrows():
+        # Get attack values
+        attack_values = {col: row[col] for col in config.TEAM_COLUMNS['attack_columns']}
+        attack_skill = config.calculate_weighted_average(attack_values, config.ATTACK_WEIGHTS)
         
-        # Individual player factors (30% influence)
-        attacker_factor = self.attacker_skills.get_attacking_skill() * 0.3
-        defender_factor = self.defender_skills.get_defensive_skill() * 0.3
+        # Get defense values
+        defense_values = {col: row[col] for col in config.TEAM_COLUMNS['defense_columns']}
+        defense_skill = config.calculate_weighted_average(defense_values, config.DEFENSE_WEIGHTS)
         
-        # Team factors (40% influence)
-        team_attack_factor = attacker_team.get_team_attack_factor() * 0.4
-        team_defense_factor = defender_team.get_team_defense_factor() * 0.4
+        team_skills[row[config.TEAM_COLUMNS['name']]] = TeamSkill(
+            overall=config.normalize_skill(row[config.TEAM_COLUMNS['overall']]),
+            attack=config.normalize_skill(attack_skill),
+            defense=config.normalize_skill(defense_skill),
+            tpr=config.normalize_skill(row[config.TEAM_COLUMNS['tpr']])
+        )
+    
+    return team_skills
+
+def load_player_data(csv_path: str, config: PlayerDataConfig = PlayerDataConfig) -> Dict[str, Tuple[PlayerSkill, GoalkeeperSkill, FootPreference]]:
+    """
+    Load player data from CSV file and return a dictionary of player skills.
+    
+    Args:
+        csv_path: Path to the CSV file containing player data
+        config: Configuration class for data loading (default: PlayerDataConfig)
+    
+    Returns:
+        Dictionary mapping player names to tuples of (PlayerSkill, GoalkeeperSkill, FootPreference)
+        Note: For outfield players, GoalkeeperSkill will be None
+        For goalkeepers, PlayerSkill will be None
+    """
+    players_df = pd.read_csv(csv_path)
+    player_skills = {}
+    
+    for _, row in players_df.iterrows():
+        player_name = row[config.PLAYER_INFO['name']]
+        position = row[config.PLAYER_INFO['position']]
         
-        # Luck factor (10% influence)
-        luck_factor = self.luck.get_luck() * 0.1
+        # Determine foot preference
+        foot_pref = FootPreference.RIGHT if row[config.PLAYER_INFO['foot']] in ['Right', 'Either'] else FootPreference.LEFT
         
-        # Calculate the weighted sum of all factors
-        skill_modifier = (attacker_factor + team_attack_factor) - (defender_factor + team_defense_factor) + luck_factor
+        if position == 'GK':
+            # Create goalkeeper skills
+            gk_skills = {k: config.normalize_skill(row[v]) for k, v in config.GOALKEEPER_COLUMNS.items()}
+            goalkeeper_skill = GoalkeeperSkill(**gk_skills)
+            player_skill = None
+        else:
+            # Create outfield player skills
+            player_skills_dict = {k: config.normalize_skill(row[v]) for k, v in config.OUTFIELD_COLUMNS.items()}
+            player_skill = PlayerSkill(**player_skills_dict)
+            goalkeeper_skill = None
         
-        # Apply the modifier to the base probability
-        final_prob = base_prob * (1 + skill_modifier)
-        
-        # Ensure the probability stays within reasonable bounds
-        return max(0.05, min(0.95, final_prob))
+        player_skills[player_name] = (player_skill, goalkeeper_skill, foot_pref)
+    
+    return player_skills
 
-    def determine_outcome(self):
-        return self.outcome_manager.determine_shot_outcome()
-
-    def get_outcome_description(self, outcome: OutcomeType) -> str:
-        return str(outcome)
-
-
-def normalize(skill_value):
-    return skill_value / 99.0
-
-
-def load_player_data(player_name):
-    csv_path = os.path.join(os.path.dirname(__file__), "testdata", "players.csv")
-    df = pd.read_csv(csv_path)
-    player = df[df['Name'] == player_name].iloc[0]
-    return player
-
-
-def load_team_data(team_name):
-    csv_path = os.path.join(os.path.dirname(__file__), "testdata", "teams.csv")
-    df = pd.read_csv(csv_path)
-    team = df[df['Club'] == team_name].iloc[0]
-    return team.to_dict()
-
-
+# Example
 if __name__ == "__main__":
-    player_data = {
-        "striker": "Robert Lewandowski",
-        "goalkeeper": "Marc-André ter Stegen",
-        "attacker_team": "FC Bayern",
-        "defender_team": "FC Barcelona"
-    }
-    player_data2 = {
-        "striker": "Serdar Dursun",
-        "goalkeeper": "Marc-André ter Stegen",
-        "attacker_team": "Fenerbahçe",
-        "defender_team": "FC Barcelona"
-    }
-
-    # Load player data
-    striker = load_player_data(player_data["striker"])
-    goalkeeper = load_player_data(player_data["goalkeeper"])
-    attacker_team = TeamSkills(load_team_data(player_data["attacker_team"]))
-    defender_team = TeamSkills(load_team_data(player_data["defender_team"]))
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    teams_data = load_team_data(os.path.join(current_dir, "testdata", "teams.csv"))
+    players_data = load_player_data(os.path.join(current_dir, "testdata", "players.csv"))
     
-    # Setup shot parameters
-    shot_parameters = {
-        "direction": DirectionType.from_string("Center"),
-        "location": Location(21, 8),
-        "foot_preference": FootPreferenceType.from_string(striker["Preferred Foot"]),
-    }
-    shot_parameters["distance"] = shot_parameters["location"].calculate_distance_to_goal()
-    xg = ExpectedGoals(shot_parameters["location"], BodyType.FOOT)
+    attacking_team_name = "Paris Saint-Germain"
+    defending_team_name = "Paris Saint-Germain"
+    shooter_name = "Lionel Messi"
+    goalkeeper_name = "Gianluigi Donnarumma"
 
-    # Create shot event
-    shot_event = ShotEvent(
-        shot_parameters["direction"],
-        shot_parameters["location"],
-        shot_parameters["foot_preference"],
-        xg
+    # attacking_team_name = "Fenerbahçe"
+    # defending_team_name = "Paris Saint-Germain"
+    # shooter_name = "Serdar Dursun"
+    # goalkeeper_name = "Gianluigi Donnarumma"
+    
+    # Example: FC Bayern vs Paris Saint-Germain shot event
+    bayern = teams_data[attacking_team_name]
+    psg = teams_data[defending_team_name]
+    
+    # Get shooter data
+    musiala_data = players_data[shooter_name]
+    shooter_skill = musiala_data[0]  # PlayerSkill
+    shooter_foot = musiala_data[2]  # FootPreference
+    
+    # Get goalkeeper data
+    donnarumma_data = players_data.get(goalkeeper_name, 
+        (None, GoalkeeperSkill(reflexes=0.85, positioning=0.83, handling=0.80, aerial_reach=0.80), FootPreference.RIGHT))
+    goalkeeper_skill = donnarumma_data[1]
+    
+    shot = Shot_Event(
+        attacking_team_skill=bayern,
+        defender_team_skill=psg,
+        attacking_team_shooter_skill=shooter_skill,
+        defender_team_goalkeeper_skill=goalkeeper_skill,
+        luck=random.random(),
+        location=Location(grid_x=21, grid_y=8),  # near the goal
+        foot_preference=shooter_foot,
+        body_part=BodyPart.FOOT,
+        direction=Direction.TOP_RIGHT,
+        shot_style=ShotStyle(power=0.7, curve=0.3)
     )
 
-    # Create player skills
-    attacker_skills = PlayerSkills(striker)
-    defender_skills = PlayerSkills(goalkeeper)
-    luck = Luck(-0.8, 0.6)
-
-    # Create outcome
-    shot_outcome = ShotOnTargetProbability(
-        shot_event,
-        attacker_skills,
-        defender_skills,
-        attacker_team,
-        defender_team,
-        luck,
+    # Print detailed information about the shot
+    print(f"\nShot Event Details:")
+    print("-" * 50)
+    print(f"Shooter: {shooter_name}")
+    print(f"Individual Attributes:")
+    print(f"  - Shooting: {shooter_skill.shooting:.3f}")
+    print(f"  - Finishing: {shooter_skill.finishing:.3f}")
+    print(f"  - Technique: {shooter_skill.technique:.3f}")
+    print(f"  - Composure: {shooter_skill.composure:.3f}")
+    print(f"  - Overall Shooting Skill: {shooter_skill.overall_shooting_skill:.3f}")
+    print(f"  - Foot Preference: {shooter_foot.value}")
+    
+    print(f"\nGoalkeeper: {goalkeeper_name}")
+    print(f"Individual Attributes:")
+    print(f"  - Reflexes: {goalkeeper_skill.reflexes:.3f}")
+    print(f"  - Positioning: {goalkeeper_skill.positioning:.3f}")
+    print(f"  - Handling: {goalkeeper_skill.handling:.3f}")
+    print(f"  - Aerial_Reach: {goalkeeper_skill.aerial_reach:.3f}")
+    print(f"  - Overall Goalkeeper Skill: {goalkeeper_skill.overall_goalkeeper_skill:.3f}")
+    
+    print(f"\nTeam Attributes:")
+    print(f"{attacking_team_name}:")
+    print(f"  - Overall: {bayern.overall:.3f}")
+    print(f"  - Attack: {bayern.attack:.3f}")
+    print(f"  - Defense: {bayern.defense:.3f}")
+    print(f"  - TPR: {bayern.tpr:.3f}")
+    print(f"  - Effective Attack: {bayern.effective_attack:.3f}")
+    print(f"  - Effective Defense: {bayern.effective_defense:.3f}")
+    print(f"  - Effective Overall: {bayern.effective_overall:.3f}")
+    print(f"\n{defending_team_name}:")
+    print(f"  - Overall: {psg.overall:.3f}")
+    print(f"  - Attack: {psg.attack:.3f}")
+    print(f"  - Defense: {psg.defense:.3f}")
+    print(f"  - TPR: {psg.tpr:.3f}")
+    print(f"  - Effective Attack: {psg.effective_attack:.3f}")
+    print(f"  - Effective Defense: {psg.effective_defense:.3f}")
+    print(f"  - Effective Overall: {psg.effective_overall:.3f}")
+    
+    print(f"\nShot Details:")
+    print(f"  - Distance from goal: {shot.location.distance_to_goal():.2f} meters")
+    print(f"  - Shot Power: {shot.shot_style.power:.2f}")
+    print(f"  - Shot Curve: {shot.shot_style.curve:.2f}")
+    print(f"  - Direction: {shot.direction.value}")
+    print(f"  - Body Part: {shot.body_part.value}")
+    print(f"  - Luck Factor: {shot.luck:.2f}")
+    
+    # Calculate probabilities
+    skill_modifier = shot.probability_calculator.calculate_skill_modifier(
+        bayern, psg, shooter_skill, goalkeeper_skill, 
+        shot.location, shot.shot_style, shot.luck
     )
-
-    # Create GoalProbability instance
-    goal_probability = GoalProbability(striker, goalkeeper, shot_event, shot_outcome)
-    goal_probability_value = shot_outcome.calculate_final_probability(attacker_team, defender_team) * xg.get_xg_factor()
-
-    # Test the outcome
-    result = shot_outcome.determine_outcome()
-    print(f"\nSimulating shot: {striker['Name']} vs {goalkeeper['Name']}")
-    print(f"Shot on target probability: {shot_outcome.calculate_final_probability(attacker_team, defender_team):.2%}")
-    print(f"Goal probability: {goal_probability_value:.2%}")
-    print(f"Distance to goal: {shot_parameters['distance']:.2f}m")
-    print(f"xG: {xg.get_xg_factor():.2%}")
-    print(f"Shot outcome: {result}")
+    
+    print(f"\nProbability Modifiers:")
+    print(f"  - Skill Modifier: {skill_modifier:.3f}")
+    
+    base_probs = shot.probability_calculator.BASE_PROBABILITIES
+    print(f"\nBase Probabilities:")
+    print(f"  - On Target: {base_probs['ON_TARGET']:.1%}")
+    print(f"  - Off Target: {base_probs['OFF_TARGET']:.1%}")
+    print(f"  - Blocked: {base_probs['BLOCKED']:.1%}")
+    
+    adjusted_probs = shot._adjust_probabilities(skill_modifier)
+    print(f"\nAdjusted Probabilities:")
+    print(f"  - On Target: {adjusted_probs['ON_TARGET']:.1%}")
+    print(f"  - Off Target: {adjusted_probs['OFF_TARGET']:.1%}")
+    print(f"  - Blocked: {adjusted_probs['BLOCKED']:.1%}")
+    
+    goal_prob, xg, shotqualitydict = shot.quality_calculator.calculate_goal_probability(
+        shooter_skill,
+        goalkeeper_skill,
+        shot.location,
+        shot.shot_style,
+        shot.luck,
+        shot.body_part
+    )
+    print(f"\nGoal Probability:")
+    print(f"  - If shot is on target: {goal_prob:.1%}")
+    print(f"  - xG value: {xg:.1%}")
+    print(f"  - Dict: {shotqualitydict}")
+    
+    outcome = shot.determine_shot_outcome()
+    print(f"\nFinal Outcome: {outcome.value}")
+    print(f"Shooter was: {shooter_name}")
+    print("-" * 50)

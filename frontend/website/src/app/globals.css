@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --futsim-white: #fffeFF;
+  --futsim-green: #02eb29;
+  --futsim-blue: #1900ff;
+  --futsim-black: #000300;
+}
+
+@layer components {
+  .bg-futsim-white {
+    background-color: var(--futsim-white);
+  }
+  
+  .bg-futsim-green {
+    background-color: var(--futsim-green);
+  }
+  
+  .bg-futsim-blue {
+    background-color: var(--futsim-blue);
+  }
+  
+  .bg-futsim-black {
+    background-color: var(--futsim-black);
+  }
+
+  .text-futsim-white {
+    color: var(--futsim-white);
+  }
+  
+  .text-futsim-green {
+    color: var(--futsim-green);
+  }
+  
+  .text-futsim-blue {
+    color: var(--futsim-blue);
+  }
+  
+  .text-futsim-black {
+    color: var(--futsim-black);
+  }
+
+  .border-futsim-white {
+    border-color: var(--futsim-white);
+  }
+  
+  .border-futsim-green {
+    border-color: var(--futsim-green);
+  }
+  
+  .border-futsim-blue {
+    border-color: var(--futsim-blue);
+  }
+  
+  .border-futsim-black {
+    border-color: var(--futsim-black);
+  }
+
+  /* Custom gradients */
+  .bg-futsim-gradient {
+    background: linear-gradient(135deg, var(--futsim-blue) 0%, var(--futsim-green) 100%);
+  }
+
+  .bg-futsim-gradient-hover {
+    background: linear-gradient(135deg, var(--futsim-green) 0%, var(--futsim-blue) 100%);
+  }
+
+  /* Custom animations */
+  .hover-lift {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Custom shadows */
+  .shadow-futsim {
+    box-shadow: 0 4px 14px 0 rgba(0, 3, 0, 0.1);
+  }
+
+  .shadow-futsim-hover {
+    box-shadow: 0 6px 20px 0 rgba(0, 3, 0, 0.15);
+  }
+}
+
+/* Base styles */
+body {
+  background-color: var(--futsim-black);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--futsim-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--futsim-blue);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--futsim-green);
+}
