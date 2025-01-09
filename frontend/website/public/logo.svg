@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .text { font: bold 48px sans-serif; fill: white; }
+    .subtext { font: bold 24px sans-serif; fill: #00ff00; }
+  </style>
+  <text x="50%" y="45%" text-anchor="middle" class="text">FUTSIM</text>
+  <text x="50%" y="70%" text-anchor="middle" class="subtext">FOOTBALL SIMULATION</text>  
+</svg>

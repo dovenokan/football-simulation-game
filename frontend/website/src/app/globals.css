@@ -3,92 +3,99 @@
 @tailwind utilities;
 
 :root {
-  --futsim-white: #fffeFF;
-  --futsim-green: #02eb29;
-  --futsim-blue: #1900ff;
-  --futsim-black: #000300;
+  /* Primary Colors */
+  --futsim-primary: #1E1E2D;
+  --futsim-secondary: #151521;
+  --futsim-accent: #1A1A27;
+  
+  /* Text Colors */
+  --futsim-text-primary: #FFFFFF;
+  --futsim-text-secondary: #9CA3AF;
+  --futsim-text-muted: #6B7280;
+  
+  /* Status Colors */
+  --futsim-success: #10B981;
+  --futsim-warning: #F59E0B;
+  --futsim-error: #EF4444;
+  --futsim-info: #3B82F6;
+  
+  /* Border Colors */
+  --futsim-border: #374151;
+  --futsim-border-light: #4B5563;
+  
+  /* Hover States */
+  --futsim-hover: #2D2D3A;
+  --futsim-active: #252531;
 }
 
 @layer components {
-  .bg-futsim-white {
-    background-color: var(--futsim-white);
+  /* Background Colors */
+  .bg-futsim-primary {
+    background-color: var(--futsim-primary);
   }
-  
-  .bg-futsim-green {
-    background-color: var(--futsim-green);
+  .bg-futsim-secondary {
+    background-color: var(--futsim-secondary);
   }
-  
-  .bg-futsim-blue {
-    background-color: var(--futsim-blue);
+  .bg-futsim-accent {
+    background-color: var(--futsim-accent);
   }
-  
-  .bg-futsim-black {
-    background-color: var(--futsim-black);
+  .bg-futsim-hover {
+    background-color: var(--futsim-hover);
   }
-
-  .text-futsim-white {
-    color: var(--futsim-white);
-  }
-  
-  .text-futsim-green {
-    color: var(--futsim-green);
-  }
-  
-  .text-futsim-blue {
-    color: var(--futsim-blue);
-  }
-  
-  .text-futsim-black {
-    color: var(--futsim-black);
+  .bg-futsim-active {
+    background-color: var(--futsim-active);
   }
 
-  .border-futsim-white {
-    border-color: var(--futsim-white);
+  /* Text Colors */
+  .text-futsim-primary {
+    color: var(--futsim-text-primary);
+  }
+  .text-futsim-secondary {
+    color: var(--futsim-text-secondary);
+  }
+  .text-futsim-muted {
+    color: var(--futsim-text-muted);
+  }
+
+  /* Status Colors */
+  .text-futsim-success {
+    color: var(--futsim-success);
+  }
+  .text-futsim-warning {
+    color: var(--futsim-warning);
+  }
+  .text-futsim-error {
+    color: var(--futsim-error);
+  }
+  .text-futsim-info {
+    color: var(--futsim-info);
   }
   
-  .border-futsim-green {
-    border-color: var(--futsim-green);
+  .bg-futsim-success {
+    background-color: var(--futsim-success);
   }
-  
-  .border-futsim-blue {
-    border-color: var(--futsim-blue);
+  .bg-futsim-warning {
+    background-color: var(--futsim-warning);
   }
-  
-  .border-futsim-black {
-    border-color: var(--futsim-black);
+  .bg-futsim-error {
+    background-color: var(--futsim-error);
   }
-
-  /* Custom gradients */
-  .bg-futsim-gradient {
-    background: linear-gradient(135deg, var(--futsim-blue) 0%, var(--futsim-green) 100%);
+  .bg-futsim-info {
+    background-color: var(--futsim-info);
   }
 
-  .bg-futsim-gradient-hover {
-    background: linear-gradient(135deg, var(--futsim-green) 0%, var(--futsim-blue) 100%);
+  /* Border Colors */
+  .border-futsim-default {
+    border-color: var(--futsim-border);
   }
-
-  /* Custom animations */
-  .hover-lift {
-    transition: transform 0.2s ease-in-out;
-  }
-
-  .hover-lift:hover {
-    transform: translateY(-2px);
-  }
-
-  /* Custom shadows */
-  .shadow-futsim {
-    box-shadow: 0 4px 14px 0 rgba(0, 3, 0, 0.1);
-  }
-
-  .shadow-futsim-hover {
-    box-shadow: 0 6px 20px 0 rgba(0, 3, 0, 0.15);
+  .border-futsim-light {
+    border-color: var(--futsim-border-light);
   }
 }
 
 /* Base styles */
 body {
-  background-color: var(--futsim-black);
+  background-color: var(--futsim-primary);
   font-family: 'Inter', sans-serif;
 }
 
@@ -98,14 +105,14 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--futsim-black);
+  background: var(--futsim-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--futsim-blue);
+  background: var(--futsim-accent);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--futsim-green);
+  background: var(--futsim-secondary);
 }

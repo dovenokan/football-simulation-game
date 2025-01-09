@@ -3,123 +3,53 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative">
-        {/* Background Image */}
-        <div className="absolute inset-0">
+    <div className="min-h-screen bg-black">
+      {/* Main Section */}
+      <section className="min-h-screen grid grid-cols-1 lg:grid-cols-2">
+        {/* Left Side - Geometric Pattern */}
+        <div className="relative bg-black p-12 flex flex-col justify-center">
+          <div className="absolute inset-0" style={{
+            background: `
+              radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.4) 0%, transparent 40%),
+              radial-gradient(circle at 80% 70%, rgba(37, 99, 235, 0.4) 0%, transparent 40%)
+            `,
+            opacity: 0.6
+          }} />
+          <div className="relative z-10">
+            <div className="mb-8">
+              <h1 className="text-6xl font-bold text-white mb-2 tracking-tight">
+                FUTSIM™
+              </h1>
+              <div className="flex items-center gap-3">
+                <div className="h-1 w-24 bg-blue-400 rounded-full"></div>
+                <span className="text-blue-400 text-xl font-medium">FOOTBALL SIMULATION</span>
+              </div>
+            </div>
+            <p className="text-blue-50 mb-8 text-lg max-w-xl leading-relaxed">
+              FUTSIM™&apos;te kulübünüzün şampiyonluğunu ilan etmek için daha fazla yol deneyin. 
+              FUTSIM™ ile daha fazla taktiksel kontrol sağlarken takımınızı zafere taşıyın.
+            </p>
+            <Link
+              href="/register"
+              className="inline-block bg-blue-500 text-white px-8 py-3 rounded-md font-semibold hover:bg-blue-600 transition-all"
+            >
+              Hemen Oyna
+            </Link>
+          </div>
+        </div>
+
+        {/* Right Side - Trophy Room Image */}
+        <div className="relative h-screen bg-neutral-900">
+          <div className="absolute inset-0 bg-gradient-to-r from-black to-black-400 z-10" />
           <Image
-            src="/stadium.jpg"
-            alt="Stadium Background"
+            src="/stadium.webp"
+            alt="Trophy Room"
             fill
-            className="object-cover blur-sm"
+            className="object-cover opacity-90"
             priority
           />
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-black/80" />
-        </div>
-
-        {/* Content */}
-        <div className="relative container mx-auto px-6 py-32">
-          <div className="flex flex-col lg:flex-row items-center">
-            <div className="lg:w-1/2 mb-8 lg:mb-0">
-              <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]">
-                Lead Your Team to Glory
-              </h1>
-              <p className="text-lg mb-8 text-gray-100 drop-shadow-[0_1px_2px_rgba(0,0,0,0.4)]">
-                Experience the thrill of managing your own football team. Make strategic decisions,
-                develop players, and compete against managers worldwide.
-              </p>
-              <div className="flex gap-4">
-                <Link
-                  href="/register"
-                  className="bg-green-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-transform"
-                >
-                  Start Managing
-                </Link>
-                <Link
-                  href="/login"
-                  className="bg-white/10 backdrop-blur-sm border-2 border-white/50 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/20 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-transform"
-                >
-                  Login
-                </Link>
-              </div>
-            </div>
-            <div className="lg:w-1/2">
-              <div className="relative h-[300px] lg:h-[400px] w-full">
-                {/* <Image
-                  src="/stadium.webp2"
-                  alt="Football Stadium"
-                  fill
-                  className="object-cover rounded-lg shadow-2xl"
-                  priority
-                /> */}
-              </div>
-            </div>
-          </div>
         </div>
       </section>
-
-      {/* Features Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-12">Key Features</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <div 
-                key={index} 
-                className="p-6 border rounded-lg hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-white"
-              >
-                <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-800 text-white py-8">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <p>&copy; 2024 Football Manager Simulation. All rights reserved.</p>
-            </div>
-            <div className="flex gap-6">
-              <Link href="/help" className="hover:text-green-400 transition-colors">Help</Link>
-              <Link href="/about" className="hover:text-green-400 transition-colors">About</Link>
-              <Link href="/contact" className="hover:text-green-400 transition-colors">Contact</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
-
-const features = [
-  {
-    title: "Team Management",
-    description: "Build and customize your dream team. Train players, set formations, and develop winning strategies.",
-  },
-  {
-    title: "Live Matches",
-    description: "Experience matches in real-time with detailed statistics and dynamic commentary.",
-  },
-  {
-    title: "Transfer Market",
-    description: "Scout talents, negotiate contracts, and make strategic transfers to strengthen your squad.",
-  },
-  {
-    title: "League System",
-    description: "Compete in multiple leagues and tournaments. Rise through the divisions and aim for glory.",
-  },
-  {
-    title: "Player Development",
-    description: "Nurture young talents and watch them grow into world-class players under your guidance.",
-  },
-  {
-    title: "Tactical Depth",
-    description: "Fine-tune your team's playing style with advanced tactical options and custom strategies.",
-  },
-];

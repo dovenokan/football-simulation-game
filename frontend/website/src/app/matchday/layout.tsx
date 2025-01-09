@@ -2,7 +2,7 @@
 
 import Sidebar from '@/components/navigation/Sidebar';
 
-export default function DashboardLayout({
+export default function MatchdayLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -20,7 +20,7 @@ export default function DashboardLayout({
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               </button>
-              <h1 className="text-xl text-white font-semibold">Club Overview</h1>
+              <h1 className="text-xl text-white font-semibold">Match Center</h1>
             </div>
             <div className="flex items-center space-x-4">
               <span className="text-gray-400">2 Aug 2023</span>
