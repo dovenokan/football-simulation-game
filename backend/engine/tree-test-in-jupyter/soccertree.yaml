@@ -1,0 +1,21 @@
+Shot (offensive) (prob: 0.80)
+  CloseRangeShot (offensive) (prob: 0.70)
+    CloseRangeGoal (offensive) (prob: 0.60) -> goal_close_range
+    CloseRangeSave (defensive) (prob: 0.25) -> shot_saved
+      ReboundChance (offensive) (prob: 0.30) -> rebound_shot
+        ReboundGoal (offensive) (prob: 0.40) -> goal
+        ReboundSaved (defensive) (prob: 0.30) -> shot_saved
+        ReboundMissed (offensive) (prob: 0.30) -> shot_off_target
+    CloseRangeBlock (defensive) (prob: 0.15) -> shot_blocked
+  LongRangeShot (offensive) (prob: 0.40)
+    LongRangeGoal (offensive) (prob: 0.15) -> goal_long_range
+    LongRangeSave (defensive) (prob: 0.35) -> shot_saved
+    LongRangeMiss (offensive) (prob: 0.35) -> shot_off_target
+    LongRangeBlock (defensive) (prob: 0.15) -> shot_blocked
+  PostHit (offensive) (prob: 0.10) -> shot_hit_post
+    PostAndIn (offensive) (prob: 0.30) -> goal
+    PostAndOut (offensive) (prob: 0.40) -> shot_off_target
+    ReboundChance (offensive) (prob: 0.30) -> rebound_shot
+      ReboundGoal (offensive) (prob: 0.40) -> goal
+      ReboundSaved (defensive) (prob: 0.30) -> shot_saved
+      ReboundMissed (offensive) (prob: 0.30) -> shot_off_target

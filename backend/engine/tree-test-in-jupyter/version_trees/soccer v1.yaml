@@ -1,0 +1,151 @@
+# Soccer Action Tree Structure
+# ----------------------
+
+# Match Start
+HalfStart (misc):
+  
+  # === OFFENSIVE ACTIONS ===
+  
+  # Pass Actions
+  Pass (offensive):
+    # Normal Pass
+    PassCompleted (offensive) -> pass_completed:
+      # Shot after Pass
+      ShotFromPass (offensive):
+        GoalFromPass (offensive) -> goal
+        SavedFromPass (defensive) -> shot_on_target
+        MissedFromPass (offensive) -> shot_off_target
+      # Dribble after Pass
+      DribbleFromPass (offensive):
+        DribbleSuccess (offensive) -> dribble_success
+        DribbleTackled (defensive) -> dribble_tackled
+    
+    # Through Pass
+    ThroughPass (offensive) -> through_pass_success:
+      ShotFromThrough (offensive):
+        GoalFromThrough (offensive) -> goal
+        SavedFromThrough (defensive) -> shot_on_target
+    
+    # Cross
+    Cross (offensive):
+      CrossSuccess (offensive) -> cross_success:
+        # Header Outcomes
+        HeaderFromCross (offensive):
+          HeaderGoal (offensive) -> goal_header
+          HeaderSaved (defensive) -> shot_on_target
+          HeaderMissed (offensive) -> shot_off_target
+        # Volley Outcomes
+        VolleyFromCross (offensive):
+          VolleyGoal (offensive) -> goal
+          VolleySaved (defensive) -> shot_on_target
+          VolleyMissed (offensive) -> shot_off_target
+      CrossBlocked (defensive) -> cross_blocked
+    
+    # Failed Pass Outcomes
+    PassIntercepted (defensive) -> pass_intercepted
+    PassOutOfBounds (offensive) -> pass_out_of_bounds
+  
+  # Shot Actions
+  Shot (offensive):
+    # Close Range Shots
+    CloseRangeShot (offensive):
+      CloseRangeGoal (offensive) -> goal_close_range
+      CloseRangeSave (defensive) -> shot_on_target
+      CloseRangeBlock (defensive) -> block
+    
+    # Long Range Shots
+    LongRangeShot (offensive):
+      LongRangeGoal (offensive) -> goal_long_range
+      LongRangeSave (defensive) -> shot_on_target
+      LongRangeMiss (offensive) -> shot_off_target
+      LongRangeBlock (defensive) -> block
+    
+    # Post Hit Outcomes
+    PostHit (offensive) -> shot_hit_post:
+      PostAndIn (offensive) -> goal
+      PostAndOut (offensive) -> shot_off_target
+  
+  # Dribble Actions
+  Dribble (offensive):
+    # Skill Moves
+    SkillMove (offensive) -> skill_move_success:
+      SkillMoveSuccess (offensive):
+        ShootAfterSkill (offensive) -> shot_on_target
+        PassAfterSkill (offensive) -> pass_completed
+        ContinueDribble (offensive) -> dribble_success
+    
+    # Regular Dribble
+    DribbleSuccess (offensive) -> dribble_success:
+      ShootAfterDribble (offensive) -> shot_on_target
+      PassAfterDribble (offensive) -> pass_completed
+    DribbleTackled (defensive) -> dribble_tackled
+    DribbleOut (offensive) -> dribble_out
+  
+  # === MIDDLE ACTIONS ===
+  
+  # Duel Actions
+  Duel (middle):
+    CleanTackle (defensive) -> tackle_success
+    FoulInDuel (defensive):
+      CommonFoul (defensive) -> foul_common
+      YellowCard (defensive) -> yellow_card
+      RedCard (defensive) -> red_card
+  
+  # === DEFENSIVE ACTIONS ===
+  
+  # Tackle Actions
+  Tackle (defensive):
+    # Successful Tackle
+    TackleSuccess (defensive) -> tackle_success:
+      AfterTackle (defensive):
+        ClearanceAfterTackle (defensive) -> clearance
+        PassAfterTackle (defensive) -> pass_completed
+        DribbleAfterTackle (defensive) -> dribble_success
+    
+    # Failed Tackle
+    TackleMissed (defensive) -> tackle_missed:
+      AfterMiss (offensive):
+        ShotAfterMiss (offensive) -> shot_on_target
+        DribbleAfterMiss (offensive) -> dribble_success
+    
+    # Foul Tackle
+    TackleFoul (defensive):
+      # Common Foul
+      CommonFoul (defensive) -> foul_common:
+        FreeKick (offensive) -> free_kick:
+          FreeKickGoal (offensive) -> goal
+          FreeKickSaved (defensive) -> shot_on_target
+          FreeKickMissed (offensive) -> shot_off_target
+      
+      # Yellow Card
+      YellowCard (defensive) -> yellow_card:
+        FreeKick (offensive) -> free_kick:
+          FreeKickGoal (offensive) -> goal
+          FreeKickSaved (defensive) -> shot_on_target
+          FreeKickMissed (offensive) -> shot_off_target
+      
+      # Red Card
+      RedCard (defensive) -> red_card:
+        Penalty (offensive) -> penalty:
+          PenaltyGoal (offensive) -> goal
+          PenaltySaved (defensive) -> shot_on_target
+          PenaltyMissed (offensive) -> shot_off_target
+  
+  # Block Actions
+  Block (defensive):
+    # Clean Block
+    Clearance (defensive) -> clearance:
+      AfterClearance (defensive):
+        BallRecovery (defensive) -> success
+        OpponentRecovery (offensive) -> fail
+    
+    # Deflected Block
+    Deflection (defensive) -> deflected:
+      DeflectedGoal (offensive) -> goal
+      DeflectedCorner (offensive) -> corner_kick:
+        CornerOutcomes (offensive):
+          CornerGoal (offensive) -> goal_header
+          CornerSaved (defensive) -> shot_on_target
+          CornerCleared (defensive) -> clearance
+      DeflectedThrowIn (misc) -> throw_in
+      DeflectedPenalty (offensive) -> penalty

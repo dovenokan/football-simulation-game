@@ -1,0 +1,435 @@
+coaching_properties:
+  Tactical Style:
+    Fast Tempo:
+      required_skills:
+        Acceleration: 0.20
+        Pace: 0.20
+        Stamina: 0.15
+        Work_Rate: 0.15
+        Natural_Fitness: 0.12
+        Off_the_Ball: 0.10
+        Decisions: 0.08
+    Balanced:
+      required_skills:
+        Decisions: 0.20
+        Teamwork: 0.18
+        Work_Rate: 0.15
+        Positioning: 0.15
+        Concentration: 0.12
+        Composure: 0.10
+        Vision: 0.10
+    Possession-Based:
+      required_skills:
+        Technique: 0.20
+        First_Touch: 0.18
+        Passing: 0.18
+        Vision: 0.15
+        Decisions: 0.12
+        Composure: 0.10
+        Teamwork: 0.07
+    Counter-Attacking:
+      required_skills:
+        Pace: 0.20
+        Acceleration: 0.18
+        Off_the_Ball: 0.17
+        Anticipation: 0.15
+        Decisions: 0.12
+        Work_Rate: 0.10
+        Stamina: 0.08
+    Defensive Stability:
+      required_skills:
+        Positioning: 0.20
+        Marking: 0.18
+        Tackling: 0.17
+        Concentration: 0.15
+        Decisions: 0.12
+        Anticipation: 0.10
+        Work_Rate: 0.08
+
+  Mentality:
+    Defensive:
+      required_skills:
+        Positioning: 0.20
+        Concentration: 0.18
+        Marking: 0.17
+        Tackling: 0.15
+        Anticipation: 0.12
+        Decisions: 0.10
+        Work_Rate: 0.08
+    Cautious:
+      required_skills:
+        Positioning: 0.20
+        Concentration: 0.18
+        Decisions: 0.15
+        Anticipation: 0.15
+        Work_Rate: 0.12
+        Teamwork: 0.10
+        Composure: 0.10
+    Balanced:
+      required_skills:
+        Decisions: 0.20
+        Teamwork: 0.18
+        Work_Rate: 0.15
+        Positioning: 0.15
+        Concentration: 0.12
+        Composure: 0.10
+        Vision: 0.10
+    Positive:
+      required_skills:
+        Off_the_Ball: 0.20
+        Work_Rate: 0.18
+        Decisions: 0.15
+        Teamwork: 0.15
+        Vision: 0.12
+        Flair: 0.10
+        Technique: 0.10
+    Attacking:
+      required_skills:
+        Off_the_Ball: 0.20
+        Work_Rate: 0.18
+        Vision: 0.15
+        Flair: 0.15
+        Technique: 0.12
+        Decisions: 0.10
+        Teamwork: 0.10
+
+  Transition Phase:
+    Counter-Press:
+      required_skills:
+        Work_Rate: 0.20
+        Stamina: 0.18
+        Anticipation: 0.17
+        Decisions: 0.15
+        Teamwork: 0.12
+        Positioning: 0.10
+        Aggression: 0.08
+    Hold Shape:
+      required_skills:
+        Positioning: 0.20
+        Concentration: 0.18
+        Decisions: 0.17
+        Teamwork: 0.15
+        Work_Rate: 0.12
+        Anticipation: 0.10
+        Composure: 0.08
+    Quick Transition:
+      required_skills:
+        Pace: 0.20
+        Acceleration: 0.18
+        Off_the_Ball: 0.17
+        Decisions: 0.15
+        Work_Rate: 0.12
+        Vision: 0.10
+        Anticipation: 0.08
+    Slow Build-Up:
+      required_skills:
+        Technique: 0.20
+        First_Touch: 0.18
+        Passing: 0.17
+        Vision: 0.15
+        Composure: 0.12
+        Decisions: 0.10
+        Teamwork: 0.08
+
+  Pressing Intensity:
+    Low:
+      required_skills:
+        Positioning: 0.20
+        Concentration: 0.18
+        Decisions: 0.17
+        Anticipation: 0.15
+        Work_Rate: 0.12
+        Teamwork: 0.18
+    Medium:
+      required_skills:
+        Work_Rate: 0.20
+        Stamina: 0.18
+        Positioning: 0.17
+        Decisions: 0.15
+        Teamwork: 0.12
+        Anticipation: 0.18
+    High:
+      required_skills:
+        Work_Rate: 0.20
+        Stamina: 0.18
+        Anticipation: 0.17
+        Decisions: 0.15
+        Teamwork: 0.12
+        Positioning: 0.18
+    Very High:
+      required_skills:
+        Work_Rate: 0.20
+        Stamina: 0.18
+        Anticipation: 0.17
+        Decisions: 0.15
+        Teamwork: 0.12
+        Positioning: 0.10
+        Aggression: 0.08
+
+  Playing Style:
+    Possession-Based:
+      required_skills:
+        Technique: 0.20
+        First_Touch: 0.18
+        Passing: 0.17
+        Vision: 0.15
+        Decisions: 0.12
+        Composure: 0.10
+        Teamwork: 0.08
+    Counter-Attacking:
+      required_skills:
+        Pace: 0.20
+        Acceleration: 0.18
+        Off_the_Ball: 0.17
+        Anticipation: 0.15
+        Decisions: 0.12
+        Work_Rate: 0.10
+        Stamina: 0.08
+    Direct Football:
+      required_skills:
+        Long_Shots: 0.20
+        Passing: 0.18
+        Vision: 0.17
+        Technique: 0.15
+        Decisions: 0.12
+        Off_the_Ball: 0.10
+        Work_Rate: 0.08
+    Fluid Play:
+      required_skills:
+        Technique: 0.20
+        First_Touch: 0.18
+        Vision: 0.17
+        Flair: 0.15
+        Off_the_Ball: 0.12
+        Decisions: 0.10
+        Teamwork: 0.08
+    Structured Play:
+      required_skills:
+        Positioning: 0.20
+        Decisions: 0.18
+        Teamwork: 0.17
+        Work_Rate: 0.15
+        Concentration: 0.12
+        Anticipation: 0.10
+        Composure: 0.08
+
+  Directness of Play:
+    Short Passing:
+      required_skills:
+        First_Touch: 0.20
+        Passing: 0.18
+        Technique: 0.17
+        Vision: 0.15
+        Decisions: 0.12
+        Composure: 0.10
+        Teamwork: 0.08
+    Mixed Passing:
+      required_skills:
+        Passing: 0.20
+        Vision: 0.18
+        Decisions: 0.17
+        Technique: 0.15
+        First_Touch: 0.12
+        Composure: 0.10
+        Teamwork: 0.08
+    Direct Passing:
+      required_skills:
+        Long_Shots: 0.20
+        Passing: 0.18
+        Vision: 0.17
+        Technique: 0.15
+        Decisions: 0.12
+        Off_the_Ball: 0.10
+        Work_Rate: 0.08
+
+  Attacking Width:
+    Narrow:
+      required_skills:
+        First_Touch: 0.20
+        Technique: 0.18
+        Vision: 0.17
+        Passing: 0.15
+        Decisions: 0.12
+        Off_the_Ball: 0.10
+        Teamwork: 0.08
+    Standard Width:
+      required_skills:
+        Vision: 0.20
+        Decisions: 0.18
+        Teamwork: 0.17
+        Work_Rate: 0.15
+        Off_the_Ball: 0.12
+        Passing: 0.10
+        Positioning: 0.08
+    Wide:
+      required_skills:
+        Crossing: 0.20
+        Pace: 0.18
+        Stamina: 0.17
+        Work_Rate: 0.15
+        Vision: 0.12
+        Off_the_Ball: 0.10
+        Decisions: 0.08
+
+  Tempo:
+    Very Slow:
+      required_skills:
+        Composure: 0.20
+        Decisions: 0.18
+        Vision: 0.17
+        Technique: 0.15
+        First_Touch: 0.12
+        Concentration: 0.10
+        Teamwork: 0.08
+    Slow:
+      required_skills:
+        Composure: 0.20
+        Decisions: 0.18
+        Vision: 0.17
+        Technique: 0.15
+        First_Touch: 0.12
+        Concentration: 0.10
+        Teamwork: 0.08
+    Normal:
+      required_skills:
+        Decisions: 0.20
+        Vision: 0.18
+        Technique: 0.17
+        Work_Rate: 0.15
+        Teamwork: 0.12
+        Stamina: 0.10
+        First_Touch: 0.08
+    Fast:
+      required_skills:
+        Pace: 0.20
+        Acceleration: 0.18
+        Stamina: 0.17
+        Work_Rate: 0.15
+        Decisions: 0.12
+        Off_the_Ball: 0.10
+        Vision: 0.08
+    Very Fast:
+      required_skills:
+        Pace: 0.20
+        Acceleration: 0.18
+        Stamina: 0.17
+        Work_Rate: 0.15
+        Decisions: 0.12
+        Off_the_Ball: 0.10
+        Vision: 0.08
+
+  Defensive Line:
+    Very Deep:
+      required_skills:
+        Positioning: 0.20
+        Marking: 0.18
+        Concentration: 0.17
+        Anticipation: 0.15
+        Decisions: 0.12
+        Tackling: 0.10
+        Work_Rate: 0.08
+    Deep:
+      required_skills:
+        Positioning: 0.20
+        Marking: 0.18
+        Concentration: 0.17
+        Anticipation: 0.15
+        Decisions: 0.12
+        Tackling: 0.10
+        Work_Rate: 0.08
+    Standard:
+      required_skills:
+        Positioning: 0.20
+        Marking: 0.18
+        Concentration: 0.17
+        Anticipation: 0.15
+        Decisions: 0.12
+        Tackling: 0.10
+        Work_Rate: 0.08
+    High:
+      required_skills:
+        Pace: 0.20
+        Acceleration: 0.18
+        Positioning: 0.17
+        Anticipation: 0.15
+        Decisions: 0.12
+        Marking: 0.10
+        Tackling: 0.08
+    Very High:
+      required_skills:
+        Pace: 0.20
+        Acceleration: 0.18
+        Positioning: 0.17
+        Anticipation: 0.15
+        Decisions: 0.12
+        Marking: 0.10
+        Tackling: 0.08
+
+  Offside Trap:
+    "Yes":
+      required_skills:
+        Positioning: 0.20
+        Anticipation: 0.18
+        Concentration: 0.17
+        Decisions: 0.15
+        Teamwork: 0.12
+        Work_Rate: 0.10
+        Marking: 0.08
+    "No":
+      required_skills:
+        Positioning: 0.20
+        Marking: 0.18
+        Concentration: 0.17
+        Anticipation: 0.15
+        Decisions: 0.12
+        Tackling: 0.10
+        Work_Rate: 0.08
+
+  Defensive Width:
+    Narrow:
+      required_skills:
+        Positioning: 0.20
+        Marking: 0.18
+        Concentration: 0.17
+        Anticipation: 0.15
+        Decisions: 0.12
+        Teamwork: 0.10
+        Work_Rate: 0.08
+    Standard:
+      required_skills:
+        Positioning: 0.20
+        Marking: 0.18
+        Concentration: 0.17
+        Anticipation: 0.15
+        Decisions: 0.12
+        Teamwork: 0.10
+        Work_Rate: 0.08
+    Wide:
+      required_skills:
+        Stamina: 0.20
+        Work_Rate: 0.18
+        Positioning: 0.17
+        Marking: 0.15
+        Anticipation: 0.12
+        Concentration: 0.10
+        Decisions: 0.08
+
+  Marking Style:
+    Man Marking:
+      required_skills:
+        Marking: 0.20
+        Concentration: 0.18
+        Anticipation: 0.17
+        Positioning: 0.15
+        Work_Rate: 0.12
+        Tackling: 0.10
+        Decisions: 0.08
+    Zonal Marking:
+      required_skills:
+        Positioning: 0.20
+        Anticipation: 0.18
+        Concentration: 0.17
+        Decisions: 0.15
+        Teamwork: 0.12
+        Work_Rate: 0.10
+        Marking: 0.08

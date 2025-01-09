@@ -1,0 +1,113 @@
+offensive_actions:
+  Pass:
+    player_skills:
+      - Passing
+      - Vision
+      - Decisions
+      - Technique
+      - First_Touch
+      - Composure
+      - Crossing  # For crosses
+      - Free_Kick_Taking  # For free kicks and corners
+    team_skills:
+      - Vision
+      - Teamwork
+
+  Ball_Receipt:
+    player_skills:
+      - First_Touch
+      - Technique
+      - Anticipation
+      - Composure
+      - Balance
+
+  Carry:
+    player_skills:
+      - Acceleration
+      - Pace
+      - Balance
+      - Agility
+      - Stamina
+      - Natural_Fitness
+
+  Dribble:
+    player_skills:
+      - Dribbling
+      - Technique
+      - Agility
+      - Balance
+      - Flair
+      - Acceleration
+
+  Shot:
+    player_skills:
+      - Finishing
+      - Technique
+      - Composure
+      - Long_Shots
+      - Decisions
+      - Penalty_Taking  # For penalties
+
+middle_actions:
+  Duel:
+    player_skills:
+      - Strength
+      - Balance
+      - Bravery
+      - Aggression
+      - Jumping_Reach
+      - Heading
+
+defensive_actions:
+  Tackle:
+    player_skills:
+      - Tackling
+      - Positioning
+      - Anticipation
+      - Decisions
+      - Aggression
+      - Bravery
+
+  Block:
+    player_skills:
+      - Bravery
+      - Positioning
+      - Anticipation
+      - Decisions
+      - Concentration
+
+  Clearance:
+    player_skills:
+      - Decisions
+      - Composure
+      - Technique
+      - Strength
+
+  Ball_Recovery:
+    player_skills:
+      - Anticipation
+      - Positioning
+      - Work_Rate
+      - Acceleration
+      - Natural_Fitness
+    team_skills:
+      - Work_Rate
+      - Teamwork
+
+  Interception:
+    player_skills:
+      - Anticipation
+      - Positioning
+      - Decisions
+      - Concentration
+      - Off_the_Ball
+
+  Pressure:
+    player_skills:
+      - Work_Rate
+      - Stamina
+      - Natural_Fitness
+      - Acceleration
+    team_skills:
+      - Work_Rate
+      - Teamwork
